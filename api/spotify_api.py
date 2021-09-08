@@ -39,16 +39,18 @@ def GetCustomList(token):
             "Preview": preview,
             "Lyrics": lyrics
         }
-    cust_list[0] = id_list
+    cust_list[0] = ','.join(id_list)
     return cust_list
 
 def GetTracksSpecs(token, response):
-    id_list = response[0]
     r = requests.get(
         'https://api.spotify.com/v1/audio-features',
         headers={'Authorization': f"Bearer {token['access_token']}"},
-        params={'ids': id_list})
-    return r.json()
+        params={'ids': response[0]})
+    specs = r.json()['audio_features']
+    for idx, tracks in enumerate(specs):
+        specs[idx]['Song Name'] = response[idx+1]["Song Name"]
+    return specs
 
 
 def GenToken(code):
