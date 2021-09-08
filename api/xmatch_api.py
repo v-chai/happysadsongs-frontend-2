@@ -13,8 +13,8 @@ def GetLyricsFromName(name):
 
 
 def GetLyricsFromCustom(custom):
+    del custom[0]
     for idx, song in custom.items():
-        if idx == 0: continue
         print(song)
         art = song['Artist Names'][0]
         name = song['Song Name']
