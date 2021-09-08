@@ -13,7 +13,7 @@ def GetLyricsFromName(name):
 
 
 def GetLyricsFromCustom(custom):
-    if custom[0].pop('Song Name', None) == None:
+    if isinstance(custom[0], str):
         del custom[0]
     for idx, song in custom.items():
         print(song)
