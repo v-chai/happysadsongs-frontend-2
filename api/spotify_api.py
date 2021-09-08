@@ -1,7 +1,6 @@
 import requests
 import base64
-from urllib.parse import urlencode
-from api.keys import spotify_id, spotify_sect, return_url
+from api.keys import spotify_id, spotify_sect, return_url, base_url
 
 spotify_scope = "user-read-recently-played"
 
@@ -27,7 +26,7 @@ def GetCustomList(token):
 
         first_art = artist[0]
         comp = f'{name} {first_art}'
-        lyrics = f'http://187.57.39.163:4006/lyrics?name={base64.b64encode(comp.encode()).decode()}'
+        lyrics = f'{base_url}/lyrics?name={base64.b64encode(comp.encode()).decode()}'
 
         cust_list[idx] = {
             "Song Name": name,

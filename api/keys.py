@@ -5,4 +5,5 @@ genius_id = 'Q64jLUi4wgqTlK7Hu-AA8fClPdmaUFHASM5KUlfe-xXsYsmzwNmU73hZSsdmlzV0'
 genius_sect = 'D5I2w_36VWwZ9CEhn2PErdUdhHWPY5loN90q6kMRUlqZqdH26Mr7Nom2oLevvl67jy3ol1wAvb_CEjQTXJoEug'
 genius_auth_token = 'sueuQT1e0jlB8xwdZs65lQxlIaEuvwdRPtVbdtkfTg-TmrNmREkAKe2YH2NDcQRW'
 
+base_url = 'https://happysadsongs-frontend.herokuapp.com'
 return_url = 'https://happysadsongs-frontend.herokuapp.com/login/authorized'
