@@ -1,5 +1,4 @@
-from re import template
-from flask import Flask, redirect, url_for, session, request
+from flask import Flask, redirect, url_for, session, request, render_template
 import urllib.parse
 from datetime import timedelta
 
@@ -17,9 +16,10 @@ spotify_scope = "user-read-recently-played"
 
 @app.route('/')
 def index():
-    return redirect(url_for('login'))
+    return redirect(url_for('home'))
 
-@app.route('/login')
+
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     parms = {'client_id':spotify_id, 'redirect_uri':return_url, 'response_type':'code', 'scope':spotify_scope}
     parm = urllib.parse.urlencode(parms)
@@ -31,7 +31,7 @@ def login():
 @app.route('/login/authorized')
 def spotify_authorized():
     session['token'] = GenToken(request.args.get('code')).json()
-    return redirect(url_for('listplayed'))
+    return redirect(url_for('home'))
 
 
 @app.route('/listplayed')
@@ -40,7 +40,12 @@ def listplayed():
     return GetCustomList(session['token'])
 
 
-@app.route('/lyrics')
+@app.route('/home', methods=['GET', 'POST'])
+def home():
+    return render_template('index.html')
+
+
+@app.route('/lyrics', methods=['GET', 'POST'])
 def lyrics():
     return GetLyricsFromName(request.args.get('name'))
 
