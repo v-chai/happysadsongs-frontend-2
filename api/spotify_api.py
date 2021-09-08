@@ -47,9 +47,20 @@ def GetTracksSpecs(token, response):
         'https://api.spotify.com/v1/audio-features',
         headers={'Authorization': f"Bearer {token['access_token']}"},
         params={'ids': response[0]})
-    specs = r.json()
-    for idx, tracks in enumerate(specs['audio_features']):
-        tracks['Song Name'] = response[idx+1]["Song Name"]
+    specs = {}
+    for idx, tracks in enumerate(r.json()['audio_features']):
+        specs[idx] = {
+            "Song Name": response[idx + 1]["Song Name"],
+            "Artist Names": response[idx + 1]["Artist Names"],
+            "Danceability": tracks["danceability"],
+            "Duration": tracks["duration_ms"] / 1000,
+            "Energy": tracks["energy"],
+            "Liveness": tracks["liveness"],
+            "Loudness": tracks["loudness"],
+            "Mode": tracks["mode"],
+            "Tempo": tracks["tempo"],
+            "Valence": tracks["valence"]
+        }
     return specs
 
 
