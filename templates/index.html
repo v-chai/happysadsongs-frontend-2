@@ -13,11 +13,6 @@
     {% if session['token']%}
       <input type="button" onclick="location.href='/listplayed'" value="Recent List" />
       <input type="button" onclick="location.href='/listplayedlyrical'" value="Recent List w/ Lyrics" />
-      <br>
-      <form action="/lyrics" method="GET">
-        <input type="text" id="name" name="name" placeholder="Song Name">
-        <button type="submit" value="Submit">Get Lyrics</button>
-      </form>
     {% else %}
       <input type="button" onclick="location.href='/login'" value="Log In" />
     {% endif %}
