@@ -5,7 +5,7 @@ from datetime import timedelta
 import requests
 
 from api.keys import spotify_id, return_url
-from api.spotify_api import GenToken, GetCustomList
+from api.spotify_api import GenToken, GetCustomList, GetTracksSpecs
 from api.xmatch_api import GetLyricsFromCustom, GetLyricsFromName
 
 app = Flask(__name__)
@@ -47,12 +47,19 @@ def listplayedlyrical():
     return GetLyricsFromCustom(custom)
 
 
-@app.route('/home', methods=['GET', 'POST'])
+@app.route('/listplayedfeatures')
+def listplayedfeatures():
+    session.permanent = True
+    custom = GetCustomList(session['token'])
+    return GetTracksSpecs(session['token'], custom)
+
+
+@app.route('/home')
 def home():
     return render_template('index.html')
 
 
-@app.route('/lyrics', methods=['GET', 'POST'])
+@app.route('/lyrics')
 def lyrics():
     return GetLyricsFromName(request.args.get('name'))
 
