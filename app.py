@@ -48,3 +48,7 @@ def home():
 @app.route('/lyrics', methods=['GET', 'POST'])
 def lyrics():
     return GetLyricsFromName(request.args.get('name'))
+
+
+if __name__ == "__main__":
+    app.run()
