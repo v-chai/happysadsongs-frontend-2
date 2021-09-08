@@ -16,13 +16,15 @@ def GetCustomList(token):
     cust_list = {}
     for idx, tracks in enumerate(played_list['items']):
         artist = []
-        for art in tracks['track']['artists']:
+        track = tracks['track']
+        for art in track['artists']:
             artist.append(art['name'])
 
-        name = tracks['track']['name']
-        pop = tracks['track']['popularity']
-        duration = tracks['track']['duration_ms']
-        preview = tracks['track']['preview_url']
+        name = track['name']
+        pop = track['popularity']
+        duration = track['duration_ms']
+        preview = track['preview_url']
+        id = track['id']
 
         first_art = artist[0]
         comp = f'{name} {first_art}'
@@ -34,9 +36,15 @@ def GetCustomList(token):
             "Popularity": pop,
             "Duration": duration / 1000,
             "Preview": preview,
-            "Lyrics": lyrics
+            "Lyrics": lyrics,
+            "Music ID": id
         }
     return cust_list
+
+def GetTracksSpecs(token, response):
+
+    r = requests.get('https://api.spotify.com/v1/audio-features',
+                     headers={'Authorization': f"Bearer {token}"})
 
 
 def GenToken(code):
