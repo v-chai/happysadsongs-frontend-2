@@ -1,0 +1,20 @@
+import lyricsgenius
+from api.keys import genius_auth_token
+import base64
+
+genius = lyricsgenius.Genius(genius_auth_token)
+
+def GetLyricsFromName(name):
+    tmp = genius.search_song(title=base64.b64decode(name).decode())
+    return {'lyric':tmp.lyrics}
+
+
+def GetLyricsFromCustom(custom):
+    for idx, song in custom.items():
+        print(song)
+        art = song['Artist Names'][0]
+        name = song['Song Name']
+        tmp = genius.search_song(f'{name} {art}')
+        if tmp is not None:
+            song['Lyrics'] = tmp.lyrics
+    return custom
