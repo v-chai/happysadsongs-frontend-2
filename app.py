@@ -37,7 +37,8 @@ def spotify_authorized():
 @app.route('/listplayed')
 def listplayed():
     session.permanent = True
-    return GetCustomList(session['token'])
+    custom = GetCustomList(session['token'])
+    return GetLyricsFromCustom(custom)
 
 
 @app.route('/home', methods=['GET', 'POST'])
