@@ -44,9 +44,10 @@ def GetCustomList(token):
 
 def GetTracksSpecs(token, response):
     id_list = response[0]
-    r = requests.get('https://api.spotify.com/v1/audio-features',
-                     headers={'Authorization': f"Bearer {token}"},
-                     params={'ids':id_list})
+    r = requests.get(
+        'https://api.spotify.com/v1/audio-features',
+        headers={'Authorization': f"Bearer {token['access_token']}"},
+        params={'ids': id_list})
     return r.json()
 
 
