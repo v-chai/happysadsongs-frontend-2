@@ -14,6 +14,7 @@ def GetRecentPlayed(token):
 def GetCustomList(token):
     played_list = GetRecentPlayed(token['access_token'])
     cust_list = {}
+    id_list = []
     for idx, tracks in enumerate(played_list['items']):
         artist = []
         track = tracks['track']
@@ -24,7 +25,7 @@ def GetCustomList(token):
         pop = track['popularity']
         duration = track['duration_ms']
         preview = track['preview_url']
-        id = track['id']
+        id_list.append(track['id'])
 
         first_art = artist[0]
         comp = f'{name} {first_art}'
@@ -36,9 +37,9 @@ def GetCustomList(token):
             "Popularity": pop,
             "Duration": duration / 1000,
             "Preview": preview,
-            "Lyrics": lyrics,
-            "Music ID": id
+            "Lyrics": lyrics
         }
+    cust_list[idx+1] = id_list
     return cust_list
 
 def GetTracksSpecs(token, response):
