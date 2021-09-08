@@ -14,6 +14,7 @@ def GetLyricsFromName(name):
 
 def GetLyricsFromCustom(custom):
     for idx, song in custom.items():
+        if idx == 0: continue
         print(song)
         art = song['Artist Names'][0]
         name = song['Song Name']
