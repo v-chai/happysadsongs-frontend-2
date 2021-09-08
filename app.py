@@ -54,6 +54,14 @@ def listplayedfeatures():
     return GetTracksSpecs(session['token'], custom)
 
 
+@app.route('/listplayedfull')
+def listplayedfull():
+    session.permanent = True
+    custom = GetCustomList(session['token'])
+    custom = GetTracksSpecs(session['token'], custom)
+    return GetLyricsFromCustom(custom)
+
+
 @app.route('/home')
 def home():
     return render_template('index.html')
