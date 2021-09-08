@@ -7,8 +7,8 @@ spotify_scope = "user-read-recently-played"
 
 
 def GetRecentPlayed(token):
-    r = requests.get('https://api.spotify.com/v1/me/player/recently-played',
-                     headers={'Authorization': f"Bearer {token}", 'limit':'10'})
+    r = requests.get('https://api.spotify.com/v1/me/player/recently-played?limit=10',
+                     headers={'Authorization': f"Bearer {token}"})
     return r.json()
 
 

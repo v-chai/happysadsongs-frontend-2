@@ -6,7 +6,10 @@ genius = lyricsgenius.Genius(genius_auth_token)
 
 def GetLyricsFromName(name):
     tmp = genius.search_song(title=base64.b64decode(name).decode())
-    return {'lyric':tmp.lyrics}
+    if tmp is not None:
+        return {'lyric':tmp.lyrics}
+    else:
+        return {'lyric': ''}
 
 
 def GetLyricsFromCustom(custom):
