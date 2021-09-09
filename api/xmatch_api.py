@@ -30,6 +30,8 @@ def GetLyricsFromCustom(custom):
                 if len(tmp.lyrics) < 10000:
                     song['Lyrics'] = tmp.lyrics
                     song['Language'] = langid.classify(song['Lyrics'])[0]
+                else:
+                    song['Lyrics'] = 'Limit Exceeded'
         else:
             song['Lyrics'] = 'No Lyrics'
 
