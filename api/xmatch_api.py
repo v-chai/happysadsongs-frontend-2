@@ -1,6 +1,7 @@
 import lyricsgenius
 from api.keys import genius_auth_token
 import base64
+import langid
 
 genius = lyricsgenius.Genius(genius_auth_token)
 
@@ -22,4 +23,5 @@ def GetLyricsFromCustom(custom):
         tmp = genius.search_song(f'{name} {art}')
         if tmp is not None:
             song['Lyrics'] = tmp.lyrics
+            song['Language'] = langid.classify(song['Lyrics'])[0]
     return custom
