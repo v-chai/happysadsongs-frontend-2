@@ -24,7 +24,7 @@ def GetLyricsFromCustom(custom):
         tmp = genius.search_song(f'{name} {art}')
 
         if tmp is not None:
-            if art.lower() not in map(str.lower, tmp.artist):
+            if any(art in artist for artist in tmp.artist):
                 song['Lyrics'] = 'Unmatch Artist'
             else:
                 song['Lyrics'] = tmp.lyrics
