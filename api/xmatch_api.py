@@ -24,12 +24,12 @@ def GetLyricsFromCustom(custom):
         tmp = genius.search_song(f'{name} {art}')
 
         if tmp is not None:
-            if art not in tmp.artist:
-                song['Lyrics'] = ''
+            if art.lower() not in map(str.lower, tmp.artist):
+                song['Lyrics'] = 'Unmatch Artist'
             else:
                 song['Lyrics'] = tmp.lyrics
                 song['Language'] = langid.classify(song['Lyrics'])[0]
         else:
-            song['Lyrics'] = ''
+            song['Lyrics'] = 'No Lyrics'
 
     return custom
