@@ -22,11 +22,14 @@ def GetLyricsFromCustom(custom):
         art = song['Artist Names'][0]
         name = song['Song Name']
         tmp = genius.search_song(f'{name} {art}')
-        if art not in tmp.artist:
-            tmp = None
+
         if tmp is not None:
-            song['Lyrics'] = tmp.lyrics
-            song['Language'] = langid.classify(song['Lyrics'])[0]
+            if art not in tmp.artist:
+                song['Lyrics'] = ''
+            else:
+                song['Lyrics'] = tmp.lyrics
+                song['Language'] = langid.classify(song['Lyrics'])[0]
         else:
             song['Lyrics'] = ''
+
     return custom
