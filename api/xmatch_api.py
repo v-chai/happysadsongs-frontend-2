@@ -27,8 +27,9 @@ def GetLyricsFromCustom(custom):
             if any(art in artist for artist in tmp.artist):
                 song['Lyrics'] = 'Unmatch Artist'
             else:
-                song['Lyrics'] = tmp.lyrics
-                song['Language'] = langid.classify(song['Lyrics'])[0]
+                if len(tmp.lyrics) < 10000:
+                    song['Lyrics'] = tmp.lyrics
+                    song['Language'] = langid.classify(song['Lyrics'])[0]
         else:
             song['Lyrics'] = 'No Lyrics'
 
