@@ -36,12 +36,16 @@ def spotify_authorized():
 
 @app.route('/listplayed')
 def listplayed():
+    if len(session['token']) < 20:
+        return redirect(url_for('home'))
     session.permanent = True
     return GetCustomList(session['token'])
 
 
 @app.route('/listplayedlyrical')
 def listplayedlyrical():
+    if len(session['token']) < 20:
+        return redirect(url_for('home'))
     session.permanent = True
     custom = GetCustomList(session['token'])
     return GetLyricsFromCustom(custom)
@@ -49,6 +53,8 @@ def listplayedlyrical():
 
 @app.route('/listplayedfeatures')
 def listplayedfeatures():
+    if len(session['token']) < 20:
+        return redirect(url_for('home'))
     session.permanent = True
     custom = GetCustomList(session['token'])
     return GetTracksSpecs(session['token'], custom)
@@ -56,6 +62,8 @@ def listplayedfeatures():
 
 @app.route('/listplayedfull')
 def listplayedfull():
+    if len(session['token']) < 20:
+        return redirect(url_for('home'))
     session.permanent = True
     custom = GetCustomList(session['token'])
     custom = GetTracksSpecs(session['token'], custom)
@@ -69,6 +77,8 @@ def home():
 
 @app.route('/lyrics')
 def lyrics():
+    if len(session['token']) < 20:
+        return redirect(url_for('home'))
     return GetLyricsFromName(request.args.get('name'))
 
 
