@@ -1,8 +1,7 @@
 from flask import Flask, redirect, url_for, session, request, render_template
 from datetime import timedelta
 
-from api.keys import spotify_id, return_url
-from api.spotify_api import GenToken, GetCustomList, GetTracksSpecs, GetCode
+from api.spotify_api import GenToken, GetCustomList, GetTracksSpecs, GetCode, CategoryPlaylist
 from api.xmatch_api import GetLyricsFromCustom, GetLyricsFromName
 
 app = Flask(__name__)
@@ -22,6 +21,11 @@ app.register_error_handler(500, internal_error)
 @app.route('/')
 def index():
     return redirect(url_for('home'))
+
+
+@app.route('test')
+def test():
+    return CategoryPlaylist(session['token'], 'sad')
 
 
 @app.route('/login', methods=['GET', 'POST'])

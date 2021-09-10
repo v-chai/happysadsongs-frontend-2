@@ -6,7 +6,11 @@ from api.keys import spotify_id, spotify_sect, return_url, base_url
 spotify_scope = "user-read-recently-played"
 
 
-#def GetRecommendations(token, limit, ):
+def CategoryPlaylist(token, id):
+    r = requests.get(
+        f'https://api.spotify.com/v1/browse/categories/{id}/playlists',
+        headers={'Authorization': f"Bearer {token['access_token']}"})
+    return r.json()
 
 
 
@@ -73,8 +77,8 @@ def GetCode():
     parms = {
         'client_id': spotify_id,
         'redirect_uri': return_url,
-        'response_type': 'code'
-        #'scope': spotify_scope
+        'response_type': 'code',
+        'scope': spotify_scope
     }
     parm = urllib.parse.urlencode(parms)
     return f'https://accounts.spotify.com/authorize?{parm}'
