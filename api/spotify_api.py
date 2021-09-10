@@ -1,8 +1,13 @@
 import requests
+import urllib
 import base64
 from api.keys import spotify_id, spotify_sect, return_url, base_url
 
 spotify_scope = "user-read-recently-played"
+
+
+#def GetRecommendations(token, limit, ):
+
 
 
 def GetRecentPlayed(token):
@@ -63,7 +68,19 @@ def GetTracksSpecs(token, response):
         }
     return specs
 
+#Generate code used for token generation
+def GetCode():
+    parms = {
+        'client_id': spotify_id,
+        'redirect_uri': return_url,
+        'response_type': 'code'
+        #'scope': spotify_scope
+    }
+    parm = urllib.parse.urlencode(parms)
+    return f'https://accounts.spotify.com/authorize?{parm}'
 
+
+#Generate token from given code
 def GenToken(code):
     bod = {
         'grant_type':"authorization_code",

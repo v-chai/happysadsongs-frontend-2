@@ -1,11 +1,8 @@
 from flask import Flask, redirect, url_for, session, request, render_template
-import urllib.parse
 from datetime import timedelta
 
-import requests
-
 from api.keys import spotify_id, return_url
-from api.spotify_api import GenToken, GetCustomList, GetTracksSpecs
+from api.spotify_api import GenToken, GetCustomList, GetTracksSpecs, GetCode
 from api.xmatch_api import GetLyricsFromCustom, GetLyricsFromName
 
 app = Flask(__name__)
@@ -29,11 +26,7 @@ def index():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    parms = {'client_id':spotify_id, 'redirect_uri':return_url, 'response_type':'code', 'scope':spotify_scope}
-    parm = urllib.parse.urlencode(parms)
-    return redirect(
-        f'https://accounts.spotify.com/authorize?{parm}'
-    )
+    return redirect(GetCode())
 
 
 @app.route('/login/authorized')
