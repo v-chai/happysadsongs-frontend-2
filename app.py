@@ -23,7 +23,7 @@ def index():
     return redirect(url_for('home'))
 
 
-@app.route('test')
+@app.route('/test')
 def test():
     return CategoryPlaylist(session['token'], 'sad')
 
