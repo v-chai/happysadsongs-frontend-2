@@ -48,6 +48,7 @@ def getrecentsession():
     session.permanent = True
     custom = GetCustomList(session['token'])
     session['songs'] = GetLyricsFromCustom(custom)
+    print(session['songs'])
     return redirect(url_for('home'))
 
 
