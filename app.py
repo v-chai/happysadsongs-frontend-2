@@ -30,6 +30,7 @@ def test():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    session['stage'] = 1
     return redirect(GetCode())
 
 
