@@ -17,7 +17,7 @@
             margin: 20px auto;
             padding: 10px;
             width: 300px;
-            height: 500px;
+            height: 550px;
             background-color: #fff;
             border-radius: 5px;
           }
@@ -25,7 +25,7 @@
         {% for song in session['songs'].values() %}
           <p>{{song['Song Name']}}</p>
         {% endfor %}
-        <input type="button" onclick="location.href='/listplayed'" value="Predict" />
+        <input type="button" onclick="location.href='/predict'" value="Predict" />
       {% else %}
         <style>
           .container {

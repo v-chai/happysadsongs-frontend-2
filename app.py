@@ -90,6 +90,11 @@ def api():
     return render_template('index_api.html')
 
 
+@app.route('/predict')
+def predict():
+    return render_template('index_api.html')
+
+
 @app.route('/lyrics')
 def lyrics():
     return GetLyricsFromName(request.args.get('name'))
