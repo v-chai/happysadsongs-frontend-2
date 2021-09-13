@@ -73,7 +73,7 @@ def home():
 
 
 @app.route('/api')
-def home():
+def api():
     return render_template('index_api.html')
 
 
