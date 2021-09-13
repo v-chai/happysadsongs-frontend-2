@@ -22,7 +22,7 @@
             border-radius: 5px;
           }
         </style>
-        {% for song in session['songs'] %}
+        {% for song in session['songs'].values() %}
           <p>{{song['Song Name']}}</p>
         {% endfor %}
         <input type="button" onclick="location.href='/listplayed'" value="Predict" />
