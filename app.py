@@ -30,7 +30,6 @@ def test():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    session['stage'] = 1
     return redirect(GetCode())
 
 
@@ -42,6 +41,7 @@ def spotify_authorized():
 
 @app.route('/listplayed')
 def listplayed():
+    session['stage'] = 1
     session.permanent = True
     return GetCustomList(session['token'])
 
