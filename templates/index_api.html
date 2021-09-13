@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style_api.css') }}">
 </head>
 
 <body>
@@ -11,31 +11,11 @@
   <h1>Music Predictor</h1>
   <form action="#" method="POST">
     {% if session['token']%}
-      <style>
-        .container {
-          margin: 20px auto;
-          padding: 10px;
-          width: 300px;
-          height: 400px;
-          background-color: #fff;
-          border-radius: 5px;
-        }
-      </style>
       <input type="button" onclick="location.href='/listplayed'" value="Recent List" />
       <input type="button" onclick="location.href='/listplayedlyrical'" value="Recent List w/ Lyrics" />
       <input type="button" onclick="location.href='/listplayedfeatures'" value="Recent List w/ Features" />
       <input type="button" onclick="location.href='/listplayedfull'" value="Recent List Full" />
     {% else %}
-      <style>
-        .container{
-          margin: 20px auto;
-          padding: 10px;
-          width: 300px;
-          height: 200px;
-          background-color: #fff;
-          border-radius: 5px;
-		    }
-      </style>
       <input type="button" onclick="location.href='/login'" value="Log In" />
     {% endif %}
   </form>

@@ -72,6 +72,11 @@ def home():
     return render_template('index.html')
 
 
+@app.route('/api')
+def home():
+    return render_template('index_api.html')
+
+
 @app.route('/lyrics')
 def lyrics():
     return GetLyricsFromName(request.args.get('name'))
