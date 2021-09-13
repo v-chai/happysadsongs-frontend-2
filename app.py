@@ -7,6 +7,8 @@ from api.xmatch_api import GetLyricsFromCustom, GetLyricsFromName
 app = Flask(__name__)
 app.secret_key = 'spotify_secret'
 app.permanent_session_lifetime = timedelta(minutes=5)
+app.config['SESSION_TYPE'] = 'filesystem'
+
 
 spotify_scope = "user-read-recently-played"
 
