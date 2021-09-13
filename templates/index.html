@@ -11,18 +11,21 @@
   <h1>Music Predictor</h1>
   <form action="#" method="POST">
     {% if session['token'] %}
-      {% if session['stage'] == 1 %}
+      {% if session['songs'] %}
         <style>
           .container {
             margin: 20px auto;
             padding: 10px;
             width: 300px;
-            height: 200px;
+            height: 500px;
             background-color: #fff;
             border-radius: 5px;
           }
         </style>
-        <input type="button" onclick="location.href='/listplayed'" value="Get Recent 10 Songs" />
+        {% for song in session['songs'] %}
+          <p>{{song['Song Name']}}</p>
+        {% endfor %}
+        <input type="button" onclick="location.href='/listplayed'" value="Predict" />
       {% else %}
         <style>
           .container {
@@ -34,7 +37,7 @@
             border-radius: 5px;
           }
         </style>
-        <input type="button" onclick="location.href='/listplayed'" value="Predict" />
+        <input type="button" onclick="location.href='/getrecentsession'" value="Get Recent 10 Songs" />
       {% endif %}
     {% else %}
       <style>

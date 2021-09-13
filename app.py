@@ -39,9 +39,16 @@ def spotify_authorized():
     return redirect(url_for('home'))
 
 
+@app.route('/getrecentsession')
+def getrecentsession():
+    session.permanent = True
+    custom = GetCustomList(session['token'])
+    session['songs'] = GetLyricsFromCustom(custom)
+    return redirect(url_for('home'))
+
+
 @app.route('/listplayed')
 def listplayed():
-    session['stage'] = 1
     session.permanent = True
     return GetCustomList(session['token'])
 
