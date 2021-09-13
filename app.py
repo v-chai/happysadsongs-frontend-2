@@ -1,4 +1,5 @@
 from flask import Flask, redirect, url_for, session, request, render_template
+from flask_session import Session
 from datetime import timedelta
 
 from api.spotify_api import GenToken, GetCustomList, GetTracksSpecs, GetCode, CategoryPlaylist
@@ -7,8 +8,9 @@ from api.xmatch_api import GetLyricsFromCustom, GetLyricsFromName
 app = Flask(__name__)
 app.secret_key = 'spotify_secret'
 app.permanent_session_lifetime = timedelta(minutes=5)
-app.config['SESSION_TYPE'] = 'filesystem'
-
+SESSION_TYPE = 'filesystem'
+app.config.from_object(__name__)
+Session(app)
 
 spotify_scope = "user-read-recently-played"
 
