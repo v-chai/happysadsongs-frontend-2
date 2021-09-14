@@ -113,7 +113,7 @@ def anya():
     q = Queue(connection=red)
     job = q.enqueue(PredictTop, song_list)
     job_id = job.id
-    return render_template('index_api.html', value=job_id)
+    return render_template('index_api.html', value=job)
 
 
 @app.route('/lyrics')

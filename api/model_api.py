@@ -13,4 +13,4 @@ def PredictTop(list):
             print(r.json())
         else:
             print(r.url)
-    return None
+    return 10
