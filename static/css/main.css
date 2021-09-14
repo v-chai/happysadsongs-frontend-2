@@ -180,7 +180,8 @@ iframe {
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
-
+  justify-content: center;
+  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
