@@ -492,7 +492,6 @@ iframe {
   padding: 10px 20px;
   margin: 10px;
 
-
 }
 
 .columns__analysis {
@@ -504,7 +503,6 @@ iframe {
   flex-direction: column;
   align-items: center;
   padding: 10px;
-
 }
 .happysad {
   display: -webkit-box;
@@ -521,7 +519,6 @@ iframe {
   width: 100px;
   height: 100px;
 }
-
 .happysad__text {
   display: -webkit-box;
   display: -webkit-flex;
@@ -534,7 +531,6 @@ iframe {
   padding: 0 20px;
   height: 100%;
 }
-
 .happysad__title {
   font-family: 'Fascinate Inline', serif;
   font-size: 40px;
