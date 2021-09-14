@@ -5,7 +5,7 @@ from time import sleep
 
 import os
 import redis
-from rq import Queue
+from rq import Queue, Job
 
 from api.spotify_api import GenToken, GetCustomList, GetTracksSpecs, GetCode, CategoryPlaylist
 from api.xmatch_api import GetLyricsFromCustom, GetLyricsFromName
@@ -90,10 +90,10 @@ def listplayedfeatures():
 
 @app.route('/listplayedfull')
 def listplayedfull():
-    session.permanent = True
-    custom = GetCustomList(session['token'])
-    custom = GetTracksSpecs(session['token'], custom)
-    return GetLyricsFromCustom(custom)
+    id = request.args.get('id')
+    red = redis.from_url(os.environ.get("REDIS_URL"))
+    job = Job.fetch(id, connection=red)
+    return render_template('intermediate.html', value=job)
 
 
 @app.route('/home')
