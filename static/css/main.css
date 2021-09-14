@@ -476,7 +476,8 @@ iframe {
   display: flex;
   flex-direction: row;
   align-items: space-around;
-   padding: 30px 130px 30px 30px;
+  padding: 30px 130px 30px 30px;
+
 }
 
 .columns__last-songs {
@@ -538,7 +539,6 @@ iframe {
   text-align: center;
   width: 100%;
   display: block;
-
 }
 
 .happysad__tagline {
@@ -561,7 +561,6 @@ iframe {
 .results__text {
   font-size: 16px;
 }
-
 
 .bold {
   font-family: Poppins-Bold, sans-serif;
