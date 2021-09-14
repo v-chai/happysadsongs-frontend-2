@@ -4,6 +4,7 @@ from datetime import timedelta
 
 from api.spotify_api import GenToken, GetCustomList, GetTracksSpecs, GetCode, CategoryPlaylist
 from api.xmatch_api import GetLyricsFromCustom, GetLyricsFromName
+from api.model_api import PredictTop
 
 app = Flask(__name__)
 app.secret_key = 'spotify_secret'
@@ -90,8 +91,9 @@ def api():
     return render_template('index_api.html')
 
 
-@app.route('/predict')
-def predict():
+@app.route('/anya')
+def anya():
+    PredictTop(listplayedlyrical())
     return render_template('index_api.html')
 
 

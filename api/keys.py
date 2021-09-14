@@ -7,3 +7,5 @@ genius_auth_token = 'sueuQT1e0jlB8xwdZs65lQxlIaEuvwdRPtVbdtkfTg-TmrNmREkAKe2YH2N
 
 base_url = 'https://happysadsongs-frontend.herokuapp.com'
 return_url = 'https://happysadsongs-frontend.herokuapp.com/login/authorized'
+
+model_base_url = 'https://happysad-lyzudn6c6a-uc.a.run.app/predict?lyric='
