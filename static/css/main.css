@@ -181,14 +181,16 @@ iframe {
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
+  justify-content: center;
+  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
   display: -ms-flexbox;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 100px 130px 100px 95px;
+  padding: 100px 130px 100px 130px;
+
 }
 
 /*------------------------------------------------------------------
@@ -331,7 +333,7 @@ iframe {
   width: 100%;
   height: 50px;
   border-radius: 25px;
-  background: #57b846;
+  background: #09ea72;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -467,15 +469,14 @@ iframe {
   width: 960px;
   background: #fff;
   border-radius: 10px;
-  overflow: hidden;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
   display: -ms-flexbox;
   display: flex;
   flex-direction: row;
-  align-items: space-between;
-  padding: 25px;
+  align-items: space-around;
+   padding: 30px 130px 30px 30px;
 }
 
 .columns__last-songs {
@@ -484,7 +485,11 @@ iframe {
   display: -moz-box;
   display: -ms-flexbox;
   display: flex;
+  flex-direction: column;
   min-width: 50%;
+  border: #FDB92E 2px dotted;
+  padding: 10px 20px;
+  margin: 10px;
 
 }
 
@@ -495,6 +500,8 @@ iframe {
   display: -ms-flexbox;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding: 10px;
 }
 .happysad {
   display: -webkit-box;
@@ -511,7 +518,18 @@ iframe {
   width: 100px;
   height: 100px;
 }
-
+.happysad__text {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 20px;
+  height: 100%;
+}
 .happysad__title {
   font-family: 'Fascinate Inline', serif;
   font-size: 40px;
@@ -520,16 +538,30 @@ iframe {
   text-align: center;
   width: 100%;
   display: block;
-  padding: 0px 20px;
+
 }
 
-.tagline {
+.happysad__tagline {
   font-family: 'Glory', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 20px;
   font-weight: bold;
-  padding: 0px 20px;
+
   color: #FDB92E;
 }
+.happysad__tagline_span_blue {
+  color: rgb(93, 95, 211);
+}
+
+.results{
+  border:#FDB92E 2px dashed;
+  padding: 10px 20px;
+  margin: 0px;
+}
+
+.results__text {
+  font-size: 16px;
+}
+
 
 .bold {
   font-family: Poppins-Bold, sans-serif;
