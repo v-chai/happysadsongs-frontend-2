@@ -4,3 +4,5 @@ lyricsgenius==3.0.1
 requests==2.26.0
 gunicorn==20.1.0
 langid==1.1.6
+redis
+rq

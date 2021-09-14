@@ -2,6 +2,10 @@ from flask import Flask, redirect, url_for, session, request, render_template
 from flask_session import Session
 from datetime import timedelta
 
+import os
+import redis
+from rq import Queue
+
 from api.spotify_api import GenToken, GetCustomList, GetTracksSpecs, GetCode, CategoryPlaylist
 from api.xmatch_api import GetLyricsFromCustom, GetLyricsFromName
 from api.model_api import PredictTop
@@ -12,6 +16,8 @@ app.permanent_session_lifetime = timedelta(minutes=5)
 SESSION_TYPE = 'filesystem'
 app.config.from_object(__name__)
 Session(app)
+
+r = redis.from_url(os.environ.get("REDIS_URL"))
 
 spotify_scope = "user-read-recently-played"
 
