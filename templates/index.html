@@ -35,10 +35,15 @@
 						Happy Sad Songs
 					</span>
           {% if session['token']%}
-          <input type="button" onclick="location.href='/listplayed'" value="Recent List" />
-          <input type="button" onclick="location.href='/listplayedlyrical'" value="Recent List w/ Lyrics" />
-          <input type="button" onclick="location.href='/listplayedfeatures'" value="Recent List w/ Features" />
-          <input type="button" onclick="location.href='/listplayedfull'" value="Recent List Full" />
+          <script>
+            function change() {
+              document.getElementById("but").value = "Please Wait...";
+            }
+
+          </script>
+          <div class="container-login100-form-btn">
+            <input id="but" class="login100-form-btn" type="button" onclick=change() value="Analyse" />
+          </div>
           {% else %}
           <div class="container-login100-form-btn">
             <input class="login100-form-btn" type="button" onclick="location.href='/login'" value="Log In" />
