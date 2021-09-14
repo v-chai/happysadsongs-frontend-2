@@ -34,7 +34,9 @@
 
 <body>
 
-  <p>{{value.id}}</p>
+
+    {% if value.result == None %} <p>Still thinking</p> {% else %} <p>{{value.result}}</p> {% endif %}
+
 
 
 
