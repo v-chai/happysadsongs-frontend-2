@@ -39,18 +39,14 @@
       <div class="columns">
         <div class="columns__last-songs">
           <h2>Your recently played songs ⟶</h2>
-          <!-- <ol>
+          <ol>
             {%for i in range(0, len)%}
             <li>{{session['cust_list'][i].get("Artist Names","N/a")}} - {{session['cust_list'][i].get("Song Name","N/a")}}</li>
             {%endfor%}
-          </ol> -->
+          </ol>
         </div>
         <div class="columns__analysis">
           <div class="happysad">
-            <!--=============================== logo for local testing
-                    <img class="happysad__logo" src="../static/images/happysadlogo.png" alt="happy sad songs logo -- a record playing in reverse">
-                  ========================================-->
-
             <img class="happysad__logo" src="{{ url_for('static', filename='images/happysadlogo.png') }}"
               alt="happy sad songs logo -- a record playing in reverse">
 
@@ -62,7 +58,7 @@
             </div>
           </div>
           <div class="results">
-    {% if value.result == None %} <p>Still thinking</p> {% else %} <p>{{value.result}}</p>
+    {% if value.result == None %} <p>Still thinking</p> {% else %} <p>{{value.result}}</p>{% endif %}
           </div>
         </div>
       </div>
@@ -72,7 +68,7 @@
 
 
 
-    {% endif %}
+
 
 
 
