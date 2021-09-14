@@ -5,7 +5,8 @@ from time import sleep
 
 import os
 import redis
-from rq import Queue, Job
+from rq import Queue
+from rq.job import Job
 
 from api.spotify_api import GenToken, GetCustomList, GetTracksSpecs, GetCode, CategoryPlaylist
 from api.xmatch_api import GetLyricsFromCustom, GetLyricsFromName
