@@ -101,6 +101,9 @@ def home():
     red = redis.from_url(os.environ.get("REDIS_URL"))
     q = Queue(connection=red)
     job = q.enqueue(stupid_method)
+    print("========printing job id===========")
+    print(job.id)
+
     return render_template('index.html')
 
 
