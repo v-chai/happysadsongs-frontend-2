@@ -4,6 +4,7 @@
 
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]*/
+@import url('https://fonts.googleapis.com/css2?family=Fascinate+Inline&family=Glory:wght@400;700&display=swap');
 
 @font-face {
   font-family: Poppins-Regular;
@@ -168,11 +169,11 @@ iframe {
   justify-content: center;
   align-items: center;
   padding: 15px;
-  background: #9053c7;
-  background: -webkit-linear-gradient(-135deg, #09ea72, #352f5d);
-  background: -o-linear-gradient(-135deg, #09ea72, #352f5d);
-  background: -moz-linear-gradient(-135deg, #09ea72, #352f5d);
-  background: linear-gradient(-135deg, #09ea72, #352f5d);
+  background: #FDB92E;
+  background: -webkit-linear-gradient(-135deg, #FDB92E, rgb(93, 95, 211));
+  background: -o-linear-gradient(-135deg, #FDB92E, rgb(93, 95, 211));
+  background: -moz-linear-gradient(-135deg, #FDB92E, rgb(93, 95, 211));
+  background: linear-gradient(-135deg, #FDB92E, rgb(93, 95, 211));
 }
 
 .wrap-login100 {
@@ -188,8 +189,8 @@ iframe {
   display: -ms-flexbox;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   padding: 100px 130px 100px 130px;
+
 }
 
 /*------------------------------------------------------------------
@@ -215,7 +216,6 @@ iframe {
   color: #333333;
   line-height: 1.2;
   text-align: center;
-
   width: 100%;
   display: block;
   padding-bottom: 54px;
@@ -460,4 +460,80 @@ iframe {
     visibility: visible;
     opacity: 1;
   }
+}
+
+/*------------------------------------------------------------------
+[ Analyze ]*/
+
+.columns {
+  width: 960px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: row;
+  align-items: space-between;
+  padding: 25px;
+}
+
+.columns__last-songs {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-width: 50%;
+
+}
+
+.columns__analysis {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+}
+.happysad {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0px 20px 20px 0px;
+}
+.happysad__logo {
+  width: 100px;
+  height: 100px;
+}
+
+.happysad__title {
+  font-family: 'Fascinate Inline', serif;
+  font-size: 40px;
+  color: #333333;
+  line-height: 1.2;
+  text-align: center;
+  width: 100%;
+  display: block;
+  padding: 0px 20px;
+}
+
+.tagline {
+  font-family: 'Glory', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 0px 20px;
+  color: #FDB92E;
+}
+
+.bold {
+  font-family: Poppins-Bold, sans-serif;
+  font-weight: bold;
 }
