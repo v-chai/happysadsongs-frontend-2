@@ -1,6 +1,7 @@
 from flask import Flask, redirect, url_for, session, request, render_template
 from flask_session import Session
 from datetime import timedelta
+from time import sleep
 
 import os
 import redis
@@ -17,7 +18,16 @@ SESSION_TYPE = 'filesystem'
 app.config.from_object(__name__)
 Session(app)
 
-r = redis.from_url(os.environ.get("REDIS_URL"))
+red = redis.from_url(os.environ.get("REDIS_URL"))
+q = Queue(connection=red)
+
+def stupid_method():
+    sleep(10)
+    print("I am working")
+    return 10
+
+job = q.enqueue(stupid_method)
+
 
 spotify_scope = "user-read-recently-played"
 
