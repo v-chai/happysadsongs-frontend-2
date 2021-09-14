@@ -32,32 +32,11 @@
   <div class="limiter">
     <div class="container-login100">
       <div class="columns">
-        <div class="columns__last-songs">
-          <h2>Your recently played songs ⟶</h2>
-          <!-- <ol>
-            {%for i in range(0, len)%}
-            <li>{{session['cust_list'][i].get("Artist Names","N/a")}} - {{session['cust_list'][i].get("Song Name","N/a")}}</li>
-            {%endfor%}
-          </ol> -->
-        </div>
-        <div class="columns__analysis">
-          <div class="happysad">
-            <img class="happysad__logo" src="./images/happysadlogo.png" alt="happy sad songs logo -- a record playing in reverse">
-            <div class="happysad__text">
-              <h1 class="happysad__title">happysadsongs</h1>
-              <p class="happysad__tagline">
-                Change your music. <span class="happysad__tagline_span_blue">Change your mood.</span>
-              </p>
-            </div>
-          </div>
-          <div class="results">
               {% if value.result == None %}
               <p>Still thinking</p>
               {% else %}
               <p>{{value.result}}</p>
               {% endif %}
-          </div>
-        </div>
       </div>
     </div>
   </div>
