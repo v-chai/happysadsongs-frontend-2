@@ -1,5 +1,5 @@
 import requests
-from keys import model_base_url
+from api.keys import model_base_url
 
 def PredictTop(list):
     for song in list.values():
