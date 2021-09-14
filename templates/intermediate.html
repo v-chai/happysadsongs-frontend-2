@@ -37,14 +37,14 @@
   <div class="limiter">
     <div class="container-login100">
       <div class="columns">
-        <div class="columns__last-songs">
+        <!-- <div class="columns__last-songs">
           <h2>Your recently played songs ⟶</h2>
           <ol>
             {%for i in range(0, len)%}
             <li>{{session['cust_list'][i].get("Artist Names","N/a")}} - {{session['cust_list'][i].get("Song Name","N/a")}}</li>
             {%endfor%}
           </ol>
-        </div>
+        </div> -->
         <div class="columns__analysis">
           <div class="happysad">
             <img class="happysad__logo" src="{{ url_for('static', filename='images/happysadlogo.png') }}"
