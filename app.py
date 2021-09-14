@@ -18,15 +18,14 @@ SESSION_TYPE = 'filesystem'
 app.config.from_object(__name__)
 Session(app)
 
-red = redis.from_url(os.environ.get("REDIS_URL"))
-q = Queue(connection=red)
+
 
 def stupid_method():
     sleep(10)
     print("I am working")
     return 10
 
-job = q.enqueue(stupid_method)
+
 
 
 spotify_scope = "user-read-recently-played"
@@ -99,6 +98,9 @@ def listplayedfull():
 
 @app.route('/home')
 def home():
+    red = redis.from_url(os.environ.get("REDIS_URL"))
+    q = Queue(connection=red)
+    job = q.enqueue(stupid_method)
     return render_template('index.html')
 
 
