@@ -33,10 +33,10 @@
 		<div class="container-login100">
 			<div class="columns">
 				<div class="columns__last-songs">
-          <h2>Your recently played songs:</h2>
+          <h2>Your recently played songs ⟶</h2>
           <ol>
             {%for i in range(0, len)%}
-            <li>{{session['list'][i]}}</li>
+            <li>{{session['cust_list'][i].get("Artist Names","N/a")}} - {{session['cust_list'][i].get("Song Name","N/a")}}</li>
             {%endfor%}
           </ol>
         </div>
@@ -56,12 +56,12 @@
             </div>
           </div>
           <div class="results">
-            <h2>Your music mood:</h2>
+            <h2>Your music mood ⟶</h2>
           <p class="results__text">
             Your last 10 songs are mostly <span class="bold">lyrically {% if session['overall_pred'] == 1 %} sad/angry {% else %} happy {% endif %}</span> and
             <span class="bold">musically</span> on the <span class="bold">{% if session['avg_valence'] <= 0.5 %} sadder/angrier {% else %} happier {% endif %}</span> side.
           </p>
-          <h2>Mix it up:</h2>
+          <h2>Mix it up ⟶</h2>
           <p class="results__text">
             Play a <span class="bold">{% if session['overall_pred'] == 1 %} happier {% else %} sad or angry {% endif %} song</span>?
           </p>

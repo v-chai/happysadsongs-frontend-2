@@ -9,7 +9,7 @@ def GetLyricsFromName(name):
     tmp = genius.search_song(title=base64.b64decode(name).decode())
     if tmp is not None:
         tmp.artist
-        return {'lyric':tmp.lyrics}
+        return {'lyric':tmp.lyrics[:1500]}
     else:
         return {'lyric': ''}
 
@@ -27,7 +27,7 @@ def GetLyricsFromCustom(custom):
                 song['Lyrics'] = 'Unmatch Artist'
             else:
                 if len(tmp.lyrics) < 15000:
-                    song['Lyrics'] = tmp.lyrics
+                    song['Lyrics'] = tmp.lyrics[:1500]
                     song['Language'] = langid.classify(song['Lyrics'])[0]
                 else:
                     song['Lyrics'] = 'Limit Exceeded'
