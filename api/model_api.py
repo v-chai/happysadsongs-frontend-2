@@ -12,5 +12,5 @@ def PredictTop(list):
         if r.status_code == 200:
             print(r.json())
         else:
-            print(song)
+            print(r.url)
     return None
