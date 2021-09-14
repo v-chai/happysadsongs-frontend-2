@@ -98,12 +98,6 @@ def listplayedfull():
 
 @app.route('/home')
 def home():
-    red = redis.from_url(os.environ.get("REDIS_URL"))
-    q = Queue(connection=red)
-    job = q.enqueue(stupid_method)
-    print("========printing job id===========")
-    print(job.id)
-
     return render_template('index.html')
 
 
@@ -114,7 +108,10 @@ def api():
 
 @app.route('/anya')
 def anya():
-    PredictTop(listplayedlyrical())
+    song_list = listplayedlyrical()
+    red = redis.from_url(os.environ.get("REDIS_URL"))
+    q = Queue(connection=red)
+    job = q.enqueue(PredictTop, song_list)
     return render_template('index_api.html')
 
 
