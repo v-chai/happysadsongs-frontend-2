@@ -112,7 +112,8 @@ def anya():
     red = redis.from_url(os.environ.get("REDIS_URL"))
     q = Queue(connection=red)
     job = q.enqueue(PredictTop, song_list)
-    return render_template('index_api.html')
+    job_id = job.id
+    return render_template('index_api.html', value=job_id)
 
 
 @app.route('/lyrics')
