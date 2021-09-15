@@ -95,17 +95,15 @@ def intermediate():
     red = redis.from_url(os.environ.get("REDIS_URL"))
     job = Job.fetch(id, connection=red)
     return render_template('intermediate2.html',
-                           value=job)
+                           value=job, id=id)
 
 
 @app.route('/result')
 def result():
-    id = request.args.get('id')
     red = redis.from_url(os.environ.get("REDIS_URL"))
     job = Job.fetch(id, connection=red)
     return render_template('analyze_2.html',
                            value=job,
-                           len=len(job.result[0]),
                            songs=job.result[0],
                            overall_pred=job.result[1],
                            avg_valence=job.result[2])

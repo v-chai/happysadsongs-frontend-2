@@ -32,7 +32,7 @@
   <div class="limiter">
     <div class="container-login100">
       <div class="columns">
-
+        {% if value.result == None %}
         <div class="columns__last-songs">
           <img class="happysad__logo_size_big" src="{{ url_for('static', filename='images/happysadlogo.png') }}" alt="happy sad songs logo -- a record playing in reverse">
           <div class="happysad__text">
@@ -43,17 +43,57 @@
           </div>
         </div>
         <div class="columns__analysis">
-
           <div>
-                    {% if value.result == None %}
                     <p>Please wait. This takes process can take more than one minute.</p>
-                    {% else %}
-                    <p>Processing complete. <a href=result?{{value.id}}>Click here to see your results!</a></p>
-                    {% endif %}
           </div>
-
-
         </div>
+        {% else %}
+        <div class="columns__last-songs">
+          {% if value.result[0]|length > 0 %}
+          <h2>Songs analyzed ⟶</h2>
+          <ol>
+            {%for i in range(0, value.result[0]|length)%}
+            <li>{{value.result[0][i]}}</li>
+            {%endfor%}
+          </ol>
+          {% else %}
+          We could not analyze any of your songs.
+          {% endif %}
+        </div>
+        <div class="columns__analysis">
+          <div class="happysad">
+            <img class="happysad__logo" src="{{ url_for('static', filename='images/happysadlogo.png') }}"
+              alt="happy sad songs logo -- a record playing in reverse">
+
+            <div class="happysad__text">
+              <h1 class="happysad__title">
+                happysadsongs</h1>
+              <p class="happysad__tagline">Change your music. <span class="happysad__tagline_span_blue">Change your mood.</span>
+              </p>
+            </div>
+          </div>
+          <div class="results">
+            <h2>Your music mood ⟶</h2>
+            {% if value.result[1] AND value.result[2] %}
+            <p class="results__text">
+              Your last 10 songs are mostly <span class="bold">lyrically {% if value.result[1] == 1 %} sad/angry {% else %} happy
+                {% endif %}</span> and
+              <span class="bold">musically</span> on the <span class="bold">{% if value.result[2] <= 0.5 %} sadder/angrier {% else
+                  %} happier {% endif %}</span> side.
+            </p>
+            <h2>Mix it up ⟶</h2>
+            <p class="results__text">
+              Play a <span class="bold">{% if session['value.result[1]'] == 1 %} happier {% else %} sad or angry {% endif %}
+                song</span>?
+            </p>
+            <input type="button" onclick="location.href='/playsong'" value="Play" />
+            {% else %}
+            We couldn't analyze your recently played songs :(.
+            {% endif %}
+
+          </div>
+        </div>
+        {% endif %}
       </div>
     </div>
   </div>
