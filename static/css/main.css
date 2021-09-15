@@ -524,7 +524,7 @@ iframe {
   display: -ms-flexbox;
   display: flex;
   flex-direction: column;
-  width: 40%;
+  min-width: 40%;
   border: #FDB92E 2px dashed;
   padding: 10px 20px;
   margin: 10px;
@@ -552,7 +552,7 @@ iframe {
   justify-content: flex-start;
   padding: 10px;
   border:rgb(93, 95, 211) 1 solid;
-  width: 60%;
+  width: 40%;
 }
 
 .happysad {
