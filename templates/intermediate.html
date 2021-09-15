@@ -36,7 +36,8 @@
               <p>Still thinking</p>
               {% else %}
               <div class="columns__last-songs">
-                {% if value.result[0] %}
+                {{value.result[0]}}
+                <!-- {% if len(value.result[0]) > 0 %}
                 <h2>Songs analyzed ⟶</h2>
                 <ol>
                   {%for i in range(0, len(value.result[0]))%}
@@ -45,7 +46,7 @@
                 </ol>
                 {% else %}
                 We could not analyze any of your songs.
-                {% endif %}
+                {% endif %} -->
               </div>
               {% endif %}
       </div>
