@@ -480,7 +480,7 @@ iframe {
 
 .columns_page_index {
   align-items: space-around;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 .columns_page_loading {
@@ -648,6 +648,13 @@ iframe {
 .bold {
   font-family: Poppins-Bold, sans-serif;
   font-weight: bold;
+}
+
+.iframe {
+  width: 350px;
+  height: 75px;
+  border: none;
+  margin: 15px 0px;
 }
 
 .rotate {
