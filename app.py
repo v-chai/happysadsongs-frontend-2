@@ -123,10 +123,10 @@ def api():
 @app.route('/anya')
 def anya():
     if session['running'] == 1:
-        song_list = listplayedfull()
+        session['song_list'] = listplayedfull()
         red = redis.from_url(os.environ.get("REDIS_URL"))
         q = Queue(connection=red)
-        job = q.enqueue(PredictTop, song_list)
+        job = q.enqueue(PredictTop, session['song_list'])
         session['job_id'] = job.id
         session['running'] = 2
     red = redis.from_url(os.environ.get("REDIS_URL"))
