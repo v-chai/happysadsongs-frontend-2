@@ -551,7 +551,7 @@ iframe {
   align-items: center;
   justify-content: flex-start;
   padding: 10px;
-  border:rgb(93, 95, 211) 1 solid;
+  border:rgb(93, 95, 211) 1px solid;
   width: 40%;
 }
 
@@ -565,6 +565,7 @@ iframe {
   justify-content: flex-start;
   align-items: flex-start;
   padding: 0px 20px 20px 0px;
+  border:rgb(93, 95, 211) 1px solid;
 }
 
 .happysad__logo {
