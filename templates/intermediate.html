@@ -35,8 +35,8 @@
         <div class="columns__last-songs">
           <h2>Songs to analyze ⟶</h2>
           <ol>
-            {%for song in session['song_list']%}
-            <li>{{song['Artist Names'][0]}} - {{song['Song Name']}}</li>
+            {%for i in range(10)%}
+            <li>{{session['song_list'][i]['Artist Names'][0]}} - {{session['song_list'][i]['Song Name']}}</li>
             {%endfor%}
           </ol>
 

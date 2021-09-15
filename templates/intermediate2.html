@@ -39,8 +39,8 @@
           {% if value.result[0]|length > 0 %}
           <h2>Songs analyzed ⟶</h2>
           <ol>
-            {%for i in value.result[0])%}
-            <li>{{i}}</li>
+            {%for i in range(0, value.result[0]|length)%}
+            <li>{{value.result[0][i]}}</li>
             {%endfor%}
           </ol>
           {% else %}
