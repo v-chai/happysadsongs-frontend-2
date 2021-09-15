@@ -480,6 +480,20 @@ iframe {
   padding: 30px;
 
 }
+.columns_page_result {
+  width: 960px;
+  background: #fff;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: space-around;
+  padding: 30px 150px 30px 30px;
+
+}
 .columns__logo {
   display: -webkit-box;
   display: -webkit-flex;
@@ -604,6 +618,18 @@ iframe {
   justify-content: center;
   align-items: center;
   padding: 0;
+}
+
+.loading {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 30px;
 }
 
 .results{

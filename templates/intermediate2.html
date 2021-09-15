@@ -34,7 +34,7 @@
 
   <div class="limiter">
     <div class="container-login100">
-      <div class="columns">
+      <div class="columns_page_result">
         <div class="columns__last-songs">
           {% if value.result[0]|length > 0 %}
           <h2>Songs analyzed ⟶</h2>
@@ -65,21 +65,28 @@
             <p class="results__text">
             The lyrics mood model successfully analyzed {{value.result[0]|length}} of your recently played songs.
           </p>
-            <p class="results__text"><span class="bold">Lyrics:</span> You have been listening songs that are lyrically mostly<span class="bold">{% if value.result[1] == 2 %} a mixture between sad and happy
-              {% elif value.result[1] == 1 %} sad/angry {% else %} happy
-                {% endif %}</span> {% if value.result[1] == 1 %} ({{value.result[3]}}/{{value.result[0]|length}} songs were sad). {% else %} ({{value.result[4]}}/{{value.result[0]|length}} songs were happy).
+            <p class="results__text"><span class="bold">Lyrics:</span> Based on lyrics, you have been listening to a
+              <span class="bold">
+              {% if value.result[1] == 2 %}mixture of sad/angry and happy
+              {% elif value.result[3] == value.result[0]|length %} all sad/angry
+              {% elif value.result[4] == value.result[0]|length %} all happy
+              {% elif value.result[1] == 1 %} mostly sad/angry
+              {% else %} mostly happy
+                {% endif %}</span>songs {% if value.result[1] == 1 %} ({{value.result[3]}}/{{value.result[0]|length}} songs were sad). {% else %} ({{value.result[4]}}/{{value.result[0]|length}} songs were happy).
                 {% endif %}</p>
             <p class="results__text">
-              <span class="bold">Music:</span> Your recent songs, on average, are musically on the <span class="bold">{% if value.result[2] < 0.6 and value.result[2] > 0.4%} {% elif value.result[2] < 0.4 %} sadder/angrier {% else
-                  %} happier {% endif %}</span> side (your average valence is {{value.result[2]}}, where 0 is very sad/angry and 1 is very happy).
+              <span class="bold">Music:</span> Your recent songs, on average, are musically
+                {% if value.result[2] < 0.6 and value.result[2] > 0.4%} balanced -- not too happy and not too sad
+                {% elif value.result[2] < 0.4 %} on the <span class="bold">sadder/angrier</span> side
+                {% else %} on the <span class="bold">happier</span> side {% endif %}</span> (your average valence is {{value.result[2]}}, where 0 is very sad/angry and 1 is very happy).
             </p>
             <h2>Mix it up ⟶</h2>
             <p class="results__text">
               How about a <span class="bold">{% if value.result[1] == 1 %} happier song</span>?
-              <iframe src="https://open.spotify.com/embed/playlist/6CQJ2ppNGeBr4765WNqMKq" width="300" height="100" frameborder="0"
+              <iframe src="https://open.spotify.com/embed/playlist/6CQJ2ppNGeBr4765WNqMKq" width="350" height="75" frameborder="0"
                 allowtransparency="true" allow="encrypted-media"></iframe>
                 {% else %} sad or angry song?
-                <iframe src="https://open.spotify.com/embed/playlist/1fmeUJvkOtZQBhMCOHCXz3" width="300" height="100" frameborder="0"
+                <iframe src="https://open.spotify.com/embed/playlist/1fmeUJvkOtZQBhMCOHCXz3" width="350" height="75" frameborder="0"
                   allowtransparency="true" allow="encrypted-media"></iframe>
                 {% endif %}
             </p>
