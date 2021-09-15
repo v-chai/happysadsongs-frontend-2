@@ -32,23 +32,16 @@
   <div class="limiter">
     <div class="container-login100">
       <div class="columns">
-              {% if value.result == None %}
-              <p>Still thinking</p>
-              {% else %}
-              <div class="columns__last-songs">
-                {{value.result}}
-                <!-- {% if len(value.result[0]) > 0 %}
-                <h2>Songs analyzed ⟶</h2>
-                <ol>
-                  {%for i in range(0, len(value.result[0]))%}
-                  <li>{{value.result[0][i]}}</li>
-                  {%endfor%}
-                </ol>
-                {% else %}
-                We could not analyze any of your songs.
-                {% endif %} -->
-              </div>
-              {% endif %}
+        {% if value.result != None %}
+        <div class="columns__last-songs">
+          {{value.result[0]}}
+
+        </div>
+
+          {% else %}
+          <p>Still thinking</p>
+
+          {% endif %}
       </div>
     </div>
   </div>
