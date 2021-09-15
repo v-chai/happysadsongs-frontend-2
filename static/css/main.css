@@ -170,7 +170,7 @@ iframe {
   display: -moz-box;
   display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
   justify-content: space-around;
   align-items: center;
   padding: 15px;
