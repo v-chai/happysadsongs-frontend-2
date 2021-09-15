@@ -127,11 +127,10 @@ def anya():
         red = redis.from_url(os.environ.get("REDIS_URL"))
         q = Queue(connection=red)
         job = q.enqueue(PredictTop, song_list)
-        job_id = job.id
+        session['job_id'] = job.id
         session['running'] = True
-    id = request.args.get('id')
     red = redis.from_url(os.environ.get("REDIS_URL"))
-    job = Job.fetch(id, connection=red)
+    job = Job.fetch(session['job_id'], connection=red)
     if job.result == None:
         return render_template('intermediate.html', value=job, id=id)
     session['running'] = False
