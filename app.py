@@ -91,16 +91,11 @@ def listplayedfull():
 
 @app.route('/intermediate')
 def intermediate():
-    sleep(20)
     id = request.args.get('id')
     red = redis.from_url(os.environ.get("REDIS_URL"))
     job = Job.fetch(id, connection=red)
-    return render_template('intermediate.html',
-                           value=job,
-                           len=len(job.result[0]),
-                           songs=job.result[0],
-                           overall_pred=job.result[1],
-                           avg_valence=job.result[2])
+    return render_template('intermediate2.html',
+                           value=job)
 
 
 @app.route('/result')

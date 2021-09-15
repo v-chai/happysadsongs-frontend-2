@@ -32,33 +32,24 @@
   <div class="limiter">
     <div class="container-login100">
       <div class="columns">
-        <div class="columns__last-songs">
-          <h2>Songs to analyze ⟶</h2>
-          <ol>
-            {%for i in range(9)%}
-            <li>{{song_list[i]['Artist Names'][0]}} - {{song_list[i]['Song Name']}}</li>
-            {%endfor%}
-          </ol>
 
+        <div class="columns__last-songs">
+          <img class="happysad__logo_size_big" src="{{ url_for('static', filename='images/happysadlogo.png') }}" alt="happy sad songs logo -- a record playing in reverse">
+          <div class="happysad__text">
+            <h1 class="happysad__title">
+            happysadsongs</h1>
+            <p class="happysad__tagline">Change your music. <span class="happysad__tagline_span_blue">Change your mood.</span>
+            </p>
+          </div>
         </div>
         <div class="columns__analysis">
-          <div class="happysad">
-            <!--=============================== logo for local testing
-                      <img class="happysad__logo" src="../static/images/happysadlogo.png" alt="happy sad songs logo -- a record playing in reverse">
-                    ========================================-->
 
-            <img class="happysad__logo" src="{{ url_for('static', filename='images/happysadlogo.png') }}"
-              alt="happy sad songs logo -- a record playing in reverse">
-
-            <div class="happysad__text">
-              <h1 class="happysad__title">
-                happysadsongs</h1>
-              <p class="happysad__tagline">Change your music. <span class="happysad__tagline_span_blue">Change your mood.</span>
-              </p>
-            </div>
-          </div>
           <div>
-              <p>Click here to <a href=intermediate?id={{value.id}}>start processing.</a></p>
+                    {% if value.result == None %}
+                    <p>Please wait. This takes process can take more than one minute.</p>
+                    {% else %}
+                    <p>Processing complete. <a href=result?{{value.id}}>Click here to see your results!</a></p>
+                    {% endif %}
           </div>
 
 

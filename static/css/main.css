@@ -519,6 +519,11 @@ iframe {
   width: 100px;
   height: 100px;
 }
+.happysad__logo_size_big {
+  width: 300px;
+  height: 300px;
+}
+
 .happysad__text {
   display: -webkit-box;
   display: -webkit-flex;
