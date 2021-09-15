@@ -96,6 +96,12 @@ def intermediate():
     job = Job.fetch(id, connection=red)
     return render_template('intermediate.html', value=job)
 
+@app.route('/result')
+def result():
+    id = request.args.get('id')
+    red = redis.from_url(os.environ.get("REDIS_URL"))
+    job = Job.fetch(id, connection=red)
+    return render_template('analyze_2.html', value=job)
 
 @app.route('/home')
 def home():
