@@ -91,7 +91,7 @@ def listplayedfull():
 
 @app.route('/intermediate')
 def intermediate():
-    sleep(60)
+    sleep(20)
     id = request.args.get('id')
     red = redis.from_url(os.environ.get("REDIS_URL"))
     job = Job.fetch(id, connection=red)
@@ -105,7 +105,6 @@ def intermediate():
 
 @app.route('/result')
 def result():
-    sleep(60)
     id = request.args.get('id')
     red = redis.from_url(os.environ.get("REDIS_URL"))
     job = Job.fetch(id, connection=red)
