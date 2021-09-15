@@ -524,7 +524,7 @@ iframe {
   display: -ms-flexbox;
   display: flex;
   flex-direction: column;
-  min-width: 50%;
+  min-width: 40%;
   border: #FDB92E 2px dashed;
   padding: 10px 20px;
   margin: 10px;
@@ -538,6 +538,7 @@ iframe {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 50%;
   padding: 10px;
 }
 .columns__loading {
