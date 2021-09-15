@@ -491,7 +491,7 @@ iframe {
   display: flex;
   flex-direction: row-reverse;
   align-items: space-around;
-  padding: 30px 150px 30px 30px;
+  padding: 30px;
 
 }
 .columns__logo {
