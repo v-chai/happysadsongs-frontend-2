@@ -43,12 +43,6 @@
         </div>
         <div class="columns__analysis">
           <div class="happysad">
-            <!--=============================== logo for local testing
-                      <img class="happysad__logo" src="../static/images/happysadlogo.png" alt="happy sad songs logo -- a record playing in reverse">
-                    ========================================-->
-
-            <img class="happysad__logo" src="{{ url_for('static', filename='images/happysadlogo.png') }}"
-              alt="happy sad songs logo -- a record playing in reverse">
 
             <div class="happysad__text">
               <h1 class="happysad__title">
@@ -58,7 +52,9 @@
             </div>
           </div>
           <div>
-              <p><a href=intermediate?id={{value.id}}>Click here start processing.</a></p>
+              <img class="happysad__logo rotate" src="{{ url_for('static', filename='images/happysadlogo.png') }}"
+              alt="happy sad songs logo -- a record playing in reverse">
+              <p><a href=intermediate?id={{value.id}}>Processing, Please Wait...</a></p>
           </div>
 
 
