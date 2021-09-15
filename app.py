@@ -126,6 +126,7 @@ def anya():
     q = Queue(connection=red)
     job = q.enqueue(PredictTop, song_list)
     job_id = job.id
+    sleep(10)
     return render_template('intermediate.html', value=job, song_list=song_list)
 
 
