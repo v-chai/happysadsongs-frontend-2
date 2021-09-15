@@ -21,13 +21,6 @@ Session(app)
 
 
 
-def stupid_method():
-    sleep(10)
-    print("I am working")
-    return 10
-
-
-
 
 spotify_scope = "user-read-recently-played"
 
@@ -91,6 +84,13 @@ def listplayedfeatures():
 
 @app.route('/listplayedfull')
 def listplayedfull():
+    session.permanent = True
+    custom = GetCustomList(session['token'])
+    custom = GetTracksSpecs(session['token'], custom)
+    return GetLyricsFromCustom(custom)
+
+@app.rout('/intermediate')
+def intermediate():
     id = request.args.get('id')
     red = redis.from_url(os.environ.get("REDIS_URL"))
     job = Job.fetch(id, connection=red)
@@ -109,7 +109,7 @@ def api():
 
 @app.route('/anya')
 def anya():
-    song_list = listplayedlyrical()
+    song_list = listplayedfull()
     red = redis.from_url(os.environ.get("REDIS_URL"))
     q = Queue(connection=red)
     job = q.enqueue(PredictTop, song_list)
