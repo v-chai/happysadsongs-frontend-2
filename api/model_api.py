@@ -6,7 +6,7 @@ def PredictTop(list):
     checked_songs = []
     preds = []
     valence = []
-    for song in list.values():
+    for song in list.values()[:4]:
         tmp = song['Lyrics']
         if len(tmp) < 20 or song['Language'] != "en":
             continue
