@@ -89,7 +89,7 @@ def listplayedfull():
     custom = GetTracksSpecs(session['token'], custom)
     return GetLyricsFromCustom(custom)
 
-@app.rout('/intermediate')
+@app.route('/intermediate')
 def intermediate():
     id = request.args.get('id')
     red = redis.from_url(os.environ.get("REDIS_URL"))
