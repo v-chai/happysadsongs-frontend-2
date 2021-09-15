@@ -61,10 +61,10 @@
           </div>
           <div class="results">
             <h2>Your music mood ⟶</h2>
-            {% if value.result[1] AND value.result[2] %}
+            {% if overall_pred AND avg_valence %}
           <p class="results__text">
-            Your last 10 songs are mostly <span class="bold">lyrically {% if value.result[1] == 1 %} sad/angry {% else %} happy {% endif %}</span> and
-            <span class="bold">musically</span> on the <span class="bold">{% if value.result[2] <= 0.5 %} sadder/angrier {% else %} happier {% endif %}</span> side.
+            Your last 10 songs are mostly <span class="bold">lyrically {% if overall_pred == 1 %} sad/angry {% else %} happy {% endif %}</span> and
+            <span class="bold">musically</span> on the <span class="bold">{% if avg_valence <= 0.5 %} sadder/angrier {% else %} happier {% endif %}</span> side.
           </p>
           <h2>Mix it up ⟶</h2>
           <p class="results__text">

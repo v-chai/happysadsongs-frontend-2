@@ -8,6 +8,7 @@ def PredictTop(list):
     valence = []
     for song in list.values():
         tmp = song['Lyrics']
+        # REMOVE LAST CONDITION --- only put it in to limit songs
         if len(tmp) < 20 or song['Language'] != "en" or len(checked_songs) > 3:
             continue
         r = requests.get(f'{model_base_url}', params={'lyric': tmp[:1500]})
