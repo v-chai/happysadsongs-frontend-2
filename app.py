@@ -111,7 +111,7 @@ def intermediate():
 
 @app.route('/home')
 def home():
-    session['running'] = False
+    session['running'] = 1
     return render_template('index.html')
 
 
@@ -122,20 +122,20 @@ def api():
 
 @app.route('/anya')
 def anya():
-    if not session['running']:
+    if session['running'] == 1:
         song_list = listplayedfull()
         red = redis.from_url(os.environ.get("REDIS_URL"))
         q = Queue(connection=red)
         job = q.enqueue(PredictTop, song_list)
         session['job_id'] = job.id
-        session['running'] = True
+        session['running'] = 2
     red = redis.from_url(os.environ.get("REDIS_URL"))
     job = Job.fetch(session['job_id'], connection=red)
     if job.result == None:
         return render_template('intermediate.html',
                                value=job,
                                id=session['job_id'])
-    session['running'] = False
+    session['running'] = 1
     return render_template('intermediate2.html',
                            value=job,
                            id=session['job_id'])
