@@ -35,28 +35,12 @@
   <div class="limiter">
     <div class="container-login100">
       <div class="columns">
-        {% if value.result == None %}
-        <div class="columns__last-songs">
-          <img class="happysad__logo_size_big" src="{{ url_for('static', filename='images/happysadlogo.png') }}" alt="happy sad songs logo -- a record playing in reverse">
-          <div class="happysad__text">
-            <h1 class="happysad__title">
-            happysadsongs</h1>
-            <p class="happysad__tagline">Change your music. <span class="happysad__tagline_span_blue">Change your mood.</span>
-            </p>
-          </div>
-        </div>
-        <div class="columns__analysis">
-          <div>
-                    <p>Please wait and then try refreshing this page in a minute. This takes process can take one to two minutes.</p>
-          </div>
-        </div>
-        {% else %}
         <div class="columns__last-songs">
           {% if value.result[0]|length > 0 %}
           <h2>Songs analyzed ⟶</h2>
           <ol>
-            {%for i in range(0, value.result[0]|length)%}
-            <li>{{value.result[0][i]}}</li>
+            {%for i in value.result[0])%}
+            <li>{{i}}</li>
             {%endfor%}
           </ol>
           {% else %}
@@ -77,11 +61,12 @@
           </div>
           <div class="results">
             <h2>Your music mood ⟶</h2>
-            {% if value.result[1] in [0,1] and value.result[2] %}
+            {% if value.result[1] in [0,1,2] and value.result[2] %}
             <p class="results__text">
             The lyrics mood model successfully analyzed {{value.result[0]|length}} of your recently played songs.
           </p>
-            <p class="results__text"><span class="bold">Lyrics:</span> You have been listening songs that are lyrically mostly<span class="bold">{% if value.result[1] == 1 %} sad/angry {% else %} happy
+            <p class="results__text"><span class="bold">Lyrics:</span> You have been listening songs that are lyrically mostly<span class="bold">{% if value.result[1] == 2 %} a mixture between sad and happy
+              {% elif value.result[1] == 1 %} sad/angry {% else %} happy
                 {% endif %}</span> {% if value.result[1] == 1 %} ({{value.result[3]}}/{{value.result[0]|length}} songs were sad). {% else %} ({{value.result[4]}}/{{value.result[0]|length}} songs were happy).
                 {% endif %}</p>
             <p class="results__text">
@@ -101,20 +86,11 @@
             {% else %}
             We couldn't analyze the lyrics of your recently played songs, but musically, your last 10 songs are mostly {% if value.result[2] <= 0.5 %} sadder/angrier {% else %} happier {% endif %}.
             {% endif %}
-
           </div>
         </div>
-        {% endif %}
       </div>
     </div>
   </div>
-
-
-
-
-
-
-
 
 
   <!--===============================================================================================-->

@@ -23,7 +23,7 @@ def PredictTop(list):
         try:
             overall_pred = mode(preds)
         except:
-            overall_pred = 1
+            overall_pred = 2
         avg_valence = mean(valence)
         sad_count = preds.count(1)
         happy_count = preds.count(0)
