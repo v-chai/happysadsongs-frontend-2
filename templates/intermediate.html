@@ -59,11 +59,12 @@
           </div>
           <div>
               {% if value.result == None %}
-              <p>Please wait, processing.</p>
+              <p>Please wait, processing. Click here to <a href=intermediate?id={{value.id}}>reload.</a></p>
               {% else %}
               <p>
                    <a href=result?id={{value.id}}>See my results!</a>
               </p>
+              {% endif %}
           </div>
 
 
