@@ -480,6 +480,28 @@ iframe {
   padding: 30px 130px 30px 30px;
 
 }
+.columns__logo {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  min-width: 50%;
+  padding: 10px 20px;
+  margin: 10px;
+}
+.columns__index {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
 
 .columns__last-songs {
   display: -webkit-box;
@@ -492,7 +514,6 @@ iframe {
   border: #FDB92E 2px dashed;
   padding: 10px 20px;
   margin: 10px;
-
 }
 
 .columns__analysis {
@@ -560,6 +581,18 @@ iframe {
 
 .happysad__tagline_span_blue {
   color: rgb(93, 95, 211);
+}
+
+.happysad__text_page_main {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
 }
 
 .results{

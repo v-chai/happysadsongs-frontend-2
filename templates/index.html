@@ -20,22 +20,29 @@
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/util.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
 <!--===============================================================================================-->
+
+
 </head>
 <body>
 
 	<div class="limiter">
 		<div class="container-login100">
-			<div class="wrap-login100">
+			<div class="columns">
+        <div class="columns__logo">
 				<div class="login100-pic js-tilt" data-tilt>
 					<img src="{{ url_for('static', filename='images/happysadlogo.png') }}" alt="happy sad songs logo -- a record playing in reverse">
 				</div>
-
+      </div>
+      <div class="columns__index">
+        <div class="happysad__text_page_main">
+          <p class="happysad__title">
+            happysadsongs
+          </p>
+          <p class="happysad__tagline">Change your music. <span class="happysad__tagline_span_blue">Change your mood.</span>
+          </p>
+        </div>
 				<form class="login100-form validate-form">
-					<span class="login100-form-title">
-						happysadsongs
-					</span>
-          <span class="happysad__tagline">Change your music. <span class="happysad__tagline_span_blue">Change your mood.</span>
-        </span>
+
           {% if session['token']%}
           <script>
             function change() {
@@ -53,6 +60,7 @@
           </div>
           {% endif %}
 				</form>
+      </div>
 			</div>
 		</div>
 	</div>
