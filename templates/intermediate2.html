@@ -74,7 +74,7 @@
           </div>
           <div class="results">
             <h2>Your music mood ⟶</h2>
-            {% if value.result[1] AND value.result[2] %}
+            {% if value.result[1] in [0,1] and value.result[2] %}
             <p class="results__text">
               Your last 10 songs are mostly <span class="bold">lyrically {% if value.result[1] == 1 %} sad/angry {% else %} happy
                 {% endif %}</span> and
