@@ -34,7 +34,12 @@
       <div class="columns">
         {% if value.result != None %}
         <div class="columns__last-songs">
-          {{value.result[0]}}
+          <h2>Songs analyzed ⟶</h2>
+          <ol>
+            {%for i in range(0, len(value.result[0]))%}
+            <li>{{value.result[0][i]}}</li>
+            {%endfor%}
+          </ol>
 
         </div>
 
