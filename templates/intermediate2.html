@@ -72,11 +72,11 @@
               {% elif value.result[4] == value.result[0]|length %} all happy
               {% elif value.result[1] == 1 %} mostly sad/angry
               {% else %} mostly happy
-                {% endif %}</span>songs {% if value.result[1] == 1 %} ({{value.result[3]}}/{{value.result[0]|length}} song lyrics were rated sad). {% else %} ({{value.result[4]}}/{{value.result[0]|length}} song lyrics were rated happy).
+                {% endif %}</span>songs {% if value.result[1] == 1 %} ({{value.result[3]}}/{{value.result[0]|length}} song lyrics were rated sad/angry). {% else %} ({{value.result[4]}}/{{value.result[0]|length}} song lyrics were rated happy).
                 {% endif %}</p>
             <p class="results__text">
               <span class="bold">Music:</span> Your recent songs, on average, are musically
-                {% if value.result[2] < 0.6 and value.result[2] > 0.4%} <span class="bold">balanced</span> -- not too happy and not too sad
+                {% if value.result[2] < 0.6 and value.result[2] > 0.4%} <span class="bold">balanced</span> -- not too happy and not too sad/angry
                 {% elif value.result[2] < 0.4 %} on the <span class="bold">sadder/angrier</span> side
                 {% else %} on the <span class="bold">happier</span> side {% endif %}</span> (the average valence of the tested songs is {{value.result[2]}}, where 0 is very sad/angry and 1 is very happy).
             </p>
