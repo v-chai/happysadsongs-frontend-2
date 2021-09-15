@@ -13,7 +13,7 @@ def PredictTop(list):
             continue
         r = requests.get(f'{model_base_url}', params={'lyric': tmp[:1500]})
         if r.status_code == 200:
-            preds.append(r.json()['prediction'])
+            preds.append(int(r.json()['prediction']))
             checked_songs.append(f"{song['Artist Names'][0]} - {song['Song Name']}")
             valence.append(float(song["Valence"]))
             backup_valence.append(float(song["Valence"]))
@@ -21,12 +21,12 @@ def PredictTop(list):
             backup_valence.append(float(song["Valence"]))
     if len(checked_songs) > 0:
         try:
-            overall_pred = int(mode(preds))
+            overall_pred = mode(preds)
         except:
             overall_pred = 1
         avg_valence = mean(valence)
-        sad_count = checked_songs.count(1)
-        happy_count = checked_songs.count(0)
+        sad_count = preds.count(1)
+        happy_count = preds.count(0)
     else:
         avg_valence = mean(backup_valence)
         overall_pred = "Could not analyze any lyrics."
