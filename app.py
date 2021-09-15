@@ -121,14 +121,20 @@ def api():
 
 @app.route('/anya')
 def anya():
-    if session['running'] != True:
+    if not session['running']:
         song_list = listplayedfull()
         red = redis.from_url(os.environ.get("REDIS_URL"))
         q = Queue(connection=red)
         job = q.enqueue(PredictTop, song_list)
         job_id = job.id
         session['running'] = True
-    return render_template('intermediate.html', value=job, song_list=song_list)
+    id = request.args.get('id')
+    red = redis.from_url(os.environ.get("REDIS_URL"))
+    job = Job.fetch(id, connection=red)
+    if job.result == None:
+        return render_template('intermediate.html', value=job, id=id)
+    session['running'] = False
+    return render_template('intermediate2.html', value=job, id=id)
 
 
 @app.route('/lyrics')
