@@ -132,9 +132,13 @@ def anya():
     red = redis.from_url(os.environ.get("REDIS_URL"))
     job = Job.fetch(session['job_id'], connection=red)
     if job.result == None:
-        return render_template('intermediate.html', value=job, id=id)
+        return render_template('intermediate.html',
+                               value=job,
+                               id=session['job_id'])
     session['running'] = False
-    return render_template('intermediate2.html', value=job, id=id)
+    return render_template('intermediate2.html',
+                           value=job,
+                           id=session['job_id'])
 
 
 @app.route('/lyrics')
