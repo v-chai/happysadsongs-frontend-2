@@ -82,7 +82,9 @@ ul {
 	margin: 0px;
 	list-style-type: none;
 }
-
+ol {
+  margin: 0 0 0 20px;
+}
 
 /*---------------------------------------------*/
 input {

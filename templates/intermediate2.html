@@ -44,7 +44,7 @@
         </div>
         <div class="columns__analysis">
           <div>
-                    <p>Please wait. This takes process can take more than one minute.</p>
+                    <p>Please wait and then try refreshing this page in a minute. This takes process can take one to two minutes.</p>
           </div>
         </div>
         {% else %}
@@ -57,7 +57,7 @@
             {%endfor%}
           </ol>
           {% else %}
-          We could not analyze any of your songs.
+          We could not analyze the lyrics of any of your songs.
           {% endif %}
         </div>
         <div class="columns__analysis">
@@ -76,21 +76,21 @@
             <h2>Your music mood ⟶</h2>
             {% if value.result[1] in [0,1] and value.result[2] %}
             <p class="results__text">
-              Your last 10 songs are mostly <span class="bold">lyrically {% if value.result[1] == 1 %} sad/angry {% else %} happy
-                {% endif %}</span> and
-              <span class="bold">musically</span> on the <span class="bold">{% if value.result[2] <= 0.5 %} sadder/angrier {% else
+              Based on the {{value.result[0]|length}} songs we analyzed, you have been listening songs that are <span class="bold">lyrically {% if value.result[1] == 1 %} sad/angry {% else %} happy
+                {% endif %}</span> and, on average,
+              <span class="bold">musically on the {% if value.result[2] <= 0.5 %} sadder/angrier {% else
                   %} happier {% endif %}</span> side.
             </p>
             <h2>Mix it up ⟶</h2>
             <p class="results__text">
-              Play a <span class="bold">{% if session['value.result[1]'] == 1 %} happier {% else %} sad or angry {% endif %}
+              How about a <span class="bold">{% if value.result[1] == 1 %} happier {% else %} sad or angry {% endif %}
                 song</span>?
             </p>
             <div class="container-login100-form-btn">
             <input class="login100-form-btn" type="button" onclick="location.href='/playsong'" value="Play" />
             </div>
             {% else %}
-            We couldn't analyze your recently played songs :(.
+            We couldn't analyze the lyrics of your recently played songs, but musically, your last 10 songs are mostly {% if value.result[2] <= 0.5 %} sadder/angrier {% else %} happier {% endif %}.
             {% endif %}
 
           </div>
