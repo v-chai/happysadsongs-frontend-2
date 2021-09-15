@@ -14,6 +14,7 @@ def PredictTop(list):
         if r.status_code == 200:
             preds.append(r.json()['prediction'])
             checked_songs.append(f"{song['Artist Names'][0]} - {song['Song Name']}")
+            valence.append(float(song["Valence"]))
         else:
             continue
     try:
