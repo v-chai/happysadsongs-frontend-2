@@ -61,13 +61,13 @@ def GetTracksSpecs(token, response):
         specs[idx] = {
             "Song Name": response[idx + 1]["Song Name"],
             "Artist Names": response[idx + 1]["Artist Names"],
-            "Danceability": tracks["danceability"],
-            "Duration": tracks["duration_ms"] / 1000,
-            "Energy": tracks["energy"],
-            "Liveness": tracks["liveness"],
-            "Loudness": tracks["loudness"],
-            "Mode": tracks["mode"],
-            "Tempo": tracks["tempo"],
+            # "Danceability": tracks["danceability"],
+            # "Duration": tracks["duration_ms"] / 1000,
+            # "Energy": tracks["energy"],
+            # "Liveness": tracks["liveness"],
+            # "Loudness": tracks["loudness"],
+            # "Mode": tracks["mode"],
+            # "Tempo": tracks["tempo"],
             "Valence": tracks["valence"]
         }
     return specs
