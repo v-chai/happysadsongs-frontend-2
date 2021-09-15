@@ -6,9 +6,9 @@ def PredictTop(list):
     checked_songs = []
     preds = []
     valence = []
-    for song in list.values()[:4]:
+    for song in list.values():
         tmp = song['Lyrics']
-        if len(tmp) < 20 or song['Language'] != "en":
+        if len(tmp) < 20 or song['Language'] != "en" or len(checked_songs) > 3:
             continue
         r = requests.get(f'{model_base_url}', params={'lyric': tmp[:1500]})
         if r.status_code == 200:
