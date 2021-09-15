@@ -26,7 +26,7 @@ spotify_scope = "user-read-recently-played"
 
 
 def internal_error(e):
-    return redirect(url_for('home')), 400
+    return redirect(url_for('home'))
 
 
 app.register_error_handler(500, internal_error)
@@ -111,6 +111,7 @@ def intermediate():
 
 @app.route('/home')
 def home():
+    session['running'] = False
     return render_template('index.html')
 
 
