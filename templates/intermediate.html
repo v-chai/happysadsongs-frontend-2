@@ -36,8 +36,8 @@
         <div class="columns__last-songs">
           <h2>Songs analyzed ⟶</h2>
           <ol>
-            {%for i in range(0, len(value.result[0]))%}
-            <li>{{value.result[0][i]}}</li>
+            {%for i in range(0, len)%}
+            <li>{{songs[i]}}</li>
             {%endfor%}
           </ol>
 
