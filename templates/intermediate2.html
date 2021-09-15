@@ -25,6 +25,9 @@
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
   <!--===============================================================================================-->
 
+  {% if value.result == None %}
+  <meta http-equiv="refresh" content="5">
+  {% endif %}
 </head>
 
 <body>
@@ -33,7 +36,6 @@
     <div class="container-login100">
       <div class="columns">
         {% if value.result == None %}
-        <meta http-equiv="refresh" content="5">
         <div class="columns__last-songs">
           <img class="happysad__logo_size_big" src="{{ url_for('static', filename='images/happysadlogo.png') }}" alt="happy sad songs logo -- a record playing in reverse">
           <div class="happysad__text">
