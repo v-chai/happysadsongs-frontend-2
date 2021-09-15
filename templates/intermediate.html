@@ -32,21 +32,49 @@
   <div class="limiter">
     <div class="container-login100">
       <div class="columns">
-        {% if value.result != None %}
         <div class="columns__last-songs">
-          <h2>Songs analyzed ⟶</h2>
+          <h2>Songs to analyze ⟶</h2>
           <ol>
-            {%for i in range(0, len)%}
-            <li>{{songs[i]}}</li>
+            {%for i in range(9)%}
+            <li>{{song_list[i]}}</li>
             {%endfor%}
           </ol>
 
         </div>
+        <div class="columns__analysis">
+          <div class="happysad">
+            <!--=============================== logo for local testing
+                      <img class="happysad__logo" src="../static/images/happysadlogo.png" alt="happy sad songs logo -- a record playing in reverse">
+                    ========================================-->
 
-          {% else %}
-          <p>Still thinking</p>
+            <img class="happysad__logo" src="{{ url_for('static', filename='images/happysadlogo.png') }}"
+              alt="happy sad songs logo -- a record playing in reverse">
 
-          {% endif %}
+            <div class="happysad__text">
+              <h1 class="happysad__title">
+                happysadsongs</h1>
+              <p class="happysad__tagline">Change your music. <span class="happysad__tagline_span_blue">Change your mood.</span>
+              </p>
+            </div>
+          </div>
+
+                    <script>
+                      function change() {
+                        document.getElementById("but").value = "Please Wait...";
+                        window.location.href=result?id={{value.id}};
+                      }
+
+                    </script>
+                    <div class="container-login100-form-btn">
+                      <input id="but" class="login100-form-btn" type="button" onclick=change() value="Get Mood" />
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                      <input class="login100-form-btn" type="button" onclick="location.href='/login'" value="Log In" />
+                    </div>
+
+
+        </div>
       </div>
     </div>
   </div>

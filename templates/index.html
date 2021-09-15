@@ -37,13 +37,13 @@
           {% if session['token']%}
           <script>
             function change() {
-              document.getElementById("but").value = "Please Wait...";
+              document.getElementById("but").value = "Fetching songs...";
               window.location.href = '/anya';
             }
 
           </script>
           <div class="container-login100-form-btn">
-            <input id="but" class="login100-form-btn" type="button" onclick=change() value="Analyse" />
+            <input id="but" class="login100-form-btn" type="button" onclick=change() value="Fetch songs" />
           </div>
           {% else %}
           <div class="container-login100-form-btn">

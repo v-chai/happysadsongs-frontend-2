@@ -91,6 +91,7 @@ def listplayedfull():
 
 @app.route('/intermediate')
 def intermediate():
+    sleep(60)
     id = request.args.get('id')
     red = redis.from_url(os.environ.get("REDIS_URL"))
     job = Job.fetch(id, connection=red)
@@ -104,10 +105,17 @@ def intermediate():
 
 @app.route('/result')
 def result():
+    sleep(60)
     id = request.args.get('id')
     red = redis.from_url(os.environ.get("REDIS_URL"))
     job = Job.fetch(id, connection=red)
-    return render_template('analyze_2.html', value=job)
+    return render_template('analyze_2.html',
+                           value=job,
+                           len=len(job.result[0]),
+                           songs=job.result[0],
+                           overall_pred=job.result[1],
+                           avg_valence=job.result[2])
+
 
 @app.route('/home')
 def home():
@@ -126,7 +134,7 @@ def anya():
     q = Queue(connection=red)
     job = q.enqueue(PredictTop, song_list)
     job_id = job.id
-    return render_template('index_api.html', value=job)
+    return render_template('intermediate.html', value=job, song_list=song_list)
 
 
 @app.route('/lyrics')
