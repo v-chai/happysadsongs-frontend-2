@@ -25,7 +25,11 @@ def PredictTop(list):
         except:
             overall_pred = 1
         avg_valence = mean(valence)
+        sad_count = checked_songs.count(1)
+        happy_count = checked_songs.count(0)
     else:
         avg_valence = mean(backup_valence)
         overall_pred = "Could not analyze any lyrics."
-    return checked_songs, overall_pred, avg_valence
+        sad_count = 0
+        happy_count = 0
+    return checked_songs, overall_pred, avg_valence, sad_count, happy_count
