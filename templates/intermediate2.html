@@ -90,12 +90,14 @@
             </p>
             <h2>Mix it up ⟶</h2>
             <p class="results__text">
-              How about a <span class="bold">{% if value.result[1] == 1 %} happier {% else %} sad or angry {% endif %}
-                song</span>?
+              How about a <span class="bold">{% if value.result[1] == 1 %} happier song</span>?
+              <iframe src="https://open.spotify.com/embed/playlist/6CQJ2ppNGeBr4765WNqMKq" width="300" height="100" frameborder="0"
+                allowtransparency="true" allow="encrypted-media"></iframe>
+                {% else %} sad or angry song?
+                <iframe src="https://open.spotify.com/embed/playlist/1fmeUJvkOtZQBhMCOHCXz3" width="300" height="100" frameborder="0"
+                  allowtransparency="true" allow="encrypted-media"></iframe>
+                {% endif %}
             </p>
-            <div class="container-login100-form-btn">
-            <input class="login100-form-btn" type="button" onclick="location.href='/playsong'" value="Play" />
-            </div>
             {% else %}
             We couldn't analyze the lyrics of your recently played songs, but musically, your last 10 songs are mostly {% if value.result[2] <= 0.5 %} sadder/angrier {% else %} happier {% endif %}.
             {% endif %}
