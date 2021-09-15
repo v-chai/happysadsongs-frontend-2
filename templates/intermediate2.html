@@ -80,11 +80,11 @@
             The lyrics mood model successfully analyzed {{value.result[0]|length}} of your recently played songs.
           </p>
             <p class="results__text"><span class="bold">Lyrics:</span> You have been listening songs that are lyrically mostly<span class="bold">{% if value.result[1] == 1 %} sad/angry {% else %} happy
-                {% endif %}</span> {% if value.result[1] == 1 %} ({{value.result[3]}}/{{value.result[0]|length}} songs were sad) {% else %} ({{value.result[4]}}/{{value.result[0]|length}} songs were happy)
-                {% endif %}).</p>
+                {% endif %}</span> {% if value.result[1] == 1 %} ({{value.result[3]}}/{{value.result[0]|length}} songs were sad). {% else %} ({{value.result[4]}}/{{value.result[0]|length}} songs were happy).
+                {% endif %}</p>
             <p class="results__text">
-              <span class="bold">Music:</span> Your recenty songs, on average, are musically on the <span class="bold">{% if value.result[2] <= 0.5 %} sadder/angrier {% else
-                  %} happier {% endif %}</span> side (average valence is {{value.result[2]}}, where 0 is very sad/angry and 1 is very happy).
+              <span class="bold">Music:</span> Your recent songs, on average, are musically on the <span class="bold">{% if value.result[2] <= 0.5 %} sadder/angrier {% else
+                  %} happier {% endif %}</span> side (your average valence is {{value.result[2]}}, where 0 is very sad/angry and 1 is very happy).
             </p>
             <h2>Mix it up ⟶</h2>
             <p class="results__text">
