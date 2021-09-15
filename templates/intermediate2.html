@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Login V1</title>
+  <title>happysadsongs - a deep learning song lyric mood tester</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!--===============================================================================================-->
@@ -65,20 +65,20 @@
             <p class="results__text">
             The lyrics mood model successfully analyzed {{value.result[0]|length}} of your recently played songs.
           </p>
-            <p class="results__text"><span class="bold">Lyrics:</span> Based on lyrics, you have been listening to a
+            <p class="results__text"><span class="bold">Lyrics:</span> Based on lyrics, you have been listening to
               <span class="bold">
-              {% if value.result[1] == 2 %}mixture of sad/angry and happy
+              {% if value.result[1] == 2 %} a mixture of sad/angry and happy
               {% elif value.result[3] == value.result[0]|length %} all sad/angry
               {% elif value.result[4] == value.result[0]|length %} all happy
               {% elif value.result[1] == 1 %} mostly sad/angry
               {% else %} mostly happy
-                {% endif %}</span>songs {% if value.result[1] == 1 %} ({{value.result[3]}}/{{value.result[0]|length}} songs were sad). {% else %} ({{value.result[4]}}/{{value.result[0]|length}} songs were happy).
+                {% endif %}</span>songs {% if value.result[1] == 1 %} ({{value.result[3]}}/{{value.result[0]|length}} song lyrics were rated sad). {% else %} ({{value.result[4]}}/{{value.result[0]|length}} song lyrics were rated happy).
                 {% endif %}</p>
             <p class="results__text">
               <span class="bold">Music:</span> Your recent songs, on average, are musically
-                {% if value.result[2] < 0.6 and value.result[2] > 0.4%} balanced -- not too happy and not too sad
+                {% if value.result[2] < 0.6 and value.result[2] > 0.4%} <span class="bold">balanced</span> -- not too happy and not too sad
                 {% elif value.result[2] < 0.4 %} on the <span class="bold">sadder/angrier</span> side
-                {% else %} on the <span class="bold">happier</span> side {% endif %}</span> (your average valence is {{value.result[2]}}, where 0 is very sad/angry and 1 is very happy).
+                {% else %} on the <span class="bold">happier</span> side {% endif %}</span> (the average valence of the tested songs is {{value.result[2]}}, where 0 is very sad/angry and 1 is very happy).
             </p>
             <h2>Mix it up ⟶</h2>
             <p class="results__text">
