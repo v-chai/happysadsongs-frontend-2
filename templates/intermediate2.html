@@ -86,7 +86,9 @@
               Play a <span class="bold">{% if session['value.result[1]'] == 1 %} happier {% else %} sad or angry {% endif %}
                 song</span>?
             </p>
-            <input type="button" onclick="location.href='/playsong'" value="Play" />
+            <div class="container-login100-form-btn">
+            <input class="login100-form-btn" type="button" onclick="location.href='/playsong'" value="Play" />
+            </div>
             {% else %}
             We couldn't analyze your recently played songs :(.
             {% endif %}
