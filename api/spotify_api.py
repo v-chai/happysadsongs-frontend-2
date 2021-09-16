@@ -52,12 +52,13 @@ def GetCustomList(token):
     return cust_list
 
 def GetTracksSpecs(token, response, onlyval=False):
-    r = requests.get(
-        'https://api.spotify.com/v1/audio-features',
-        headers={'Authorization': f"Bearer {token['access_token']}"},
-        params={'ids': response})
     specs = {}
     if not onlyval:
+        r = requests.get(
+            'https://api.spotify.com/v1/audio-features',
+            headers={'Authorization': f"Bearer {token['access_token']}"},
+            params={'ids': response[0]})
+
         for idx, tracks in enumerate(r.json()['audio_features']):
             specs[idx] = {
                 "Song Name": response[idx + 1]["Song Name"],
@@ -72,6 +73,11 @@ def GetTracksSpecs(token, response, onlyval=False):
                 "Valence": tracks["valence"]
             }
     else:
+        r = requests.get(
+            'https://api.spotify.com/v1/audio-features',
+            headers={'Authorization': f"Bearer {token['access_token']}"},
+            params={'ids': response})
+
         for idx, tracks in enumerate(r.json()['audio_features']):
             specs[idx] = {"Valence": tracks["valence"]}
     return specs

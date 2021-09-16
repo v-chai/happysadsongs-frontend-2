@@ -85,14 +85,14 @@ def listplayedlyrical():
 def listplayedfeatures():
     session.permanent = True
     custom = GetCustomList(session['token'])
-    return GetTracksSpecs(session['token'], custom[0])
+    return GetTracksSpecs(session['token'], custom)
 
 
 @app.route('/listplayedfull')
 def listplayedfull():
     session.permanent = True
     custom = GetCustomList(session['token'])
-    custom = GetTracksSpecs(session['token'], custom[0])
+    custom = GetTracksSpecs(session['token'], custom)
     return GetLyricsFromCustom(custom)
 
 
