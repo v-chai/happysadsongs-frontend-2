@@ -80,7 +80,10 @@ def GetTracksSpecs(token, response, onlyval=False):
             params={'ids': lista})
 
         for idx, tracks in enumerate(r.json()['audio_features']):
-            specs[idx] = {"Valence": tracks["valence"]}
+            if tracks['valence'] is not None:
+                specs[idx] = {"Valence": tracks["valence"]}
+            else:
+                specs[idx] = {"Valence": 0.5}
     return specs
 
 #Generate code used for token generation
