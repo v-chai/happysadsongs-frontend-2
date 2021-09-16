@@ -64,7 +64,7 @@ def getrecentsession():
 def featuredplaylists():
     session.permanent = True
     feat = GetFeaturedPlaylists(session['token'])
-    return GetFeatItems(session['token'], feat)
+    return feat
 
 @app.route('/playlistsongs')
 def getplaylistitems():
