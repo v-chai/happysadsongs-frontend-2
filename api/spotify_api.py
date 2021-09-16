@@ -55,7 +55,7 @@ def GetTracksSpecs(token, response):
     r = requests.get(
         'https://api.spotify.com/v1/audio-features',
         headers={'Authorization': f"Bearer {token['access_token']}"},
-        params={'ids': response[0]})
+        params={'ids': response})
     specs = {}
     for idx, tracks in enumerate(r.json()['audio_features']):
         specs[idx] = {
@@ -111,8 +111,23 @@ def GetFeatItems(token, feat):
         r = requests.get(
             playlist['tracks']['href'],
             headers={'Authorization': f"Bearer {token['access_token']}"})
+        response = r.json()
+
+        tracks = {}
+        ids = []
+        for idx_, track in enumerate(response['items']):
+            ids.append(track['track']['id'])
+
+        specs = GetTracksSpecs(token, ids)
+
+        for idx_, track in enumerate(response['items']):
+            tracks[idx] = {
+                "Song Name": track['track']['name'],
+                "Artist Names": track['track']["Artist Names"]['artists'],
+                "Valence": specs[idx]['Valence']
+            }
         final[idx] = {
             'playlist name':playlist['description'],
-            'tracks':r.json()['items']
+            'tracks':tracks
             }
     return final
