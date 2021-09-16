@@ -125,6 +125,7 @@ def GetFeatItems(token, feat):
         specs = GetTracksSpecs(token, ids, True)
 
         for idx__, track in enumerate(response['items']):
+            print(idx__)
             tracks[idx__] = {
                 "Song Name": track['track']['name'],
                 "Artist Names": track['track']['artists'],
