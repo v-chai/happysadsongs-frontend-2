@@ -79,13 +79,8 @@ def GetTracksSpecs(token, response, onlyval=False):
             headers={'Authorization': f"Bearer {token['access_token']}"},
             params={'ids': lista})
 
-        print(r.url)
-
         for idx, tracks in enumerate(r.json()['audio_features']):
-            if tracks['valence'] is not None:
-                specs[idx] = {"Valence": tracks["valence"]}
-            else:
-                specs[idx] = {"Valence": 0.5}
+            specs[idx] = {"Valence": tracks["valence"]}
     return specs
 
 #Generate code used for token generation
