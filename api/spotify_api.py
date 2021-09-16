@@ -127,7 +127,7 @@ def GetFeatItems(token, feat):
         for idx_, track in enumerate(response['items']):
             tracks[idx] = {
                 "Song Name": track['track']['name'],
-                "Artist Names": track['track']["Artist Names"]['artists'],
+                "Artist Names": track['track']['artists'],
                 "Valence": [idx]['Valence']
             }
         final[idx] = {
