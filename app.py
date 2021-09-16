@@ -68,6 +68,7 @@ def featuredplaylists():
 
 @app.route('/playlistsongs')
 def getplaylistitemfeats():
+    session.permanent = True
     playlists = GetFeaturedPlaylists(session['token'])
     songlist = GetPlaylistSongs(session['token'], playlists=playlists)
     playlist_track_specs = GetTracksSpecs(session['token'], songlist, onlyval=True)
