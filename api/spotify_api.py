@@ -122,13 +122,13 @@ def GetFeatItems(token, feat):
         for idx_, track in enumerate(response['items']):
             ids.append(track['track']['id'])
 
-        specs = GetTracksSpecs(token, ids)
+        specs = GetTracksSpecs(token, ids, True)
 
         for idx_, track in enumerate(response['items']):
             tracks[idx] = {
                 "Song Name": track['track']['name'],
                 "Artist Names": track['track']["Artist Names"]['artists'],
-                "Valence": specs[idx]['Valence']
+                "Valence": [idx]['Valence']
             }
         final[idx] = {
             'playlist name':playlist['description'],
