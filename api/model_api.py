@@ -24,11 +24,11 @@ def PredictTop(list):
             overall_pred = mode(preds)
         except:
             overall_pred = 2
-        avg_valence = mean(valence)
+        avg_valence = round(mean(valence),2)
         sad_count = preds.count(1)
         happy_count = preds.count(0)
     else:
-        avg_valence = mean(backup_valence)
+        avg_valence = round(mean(backup_valence),2)
         overall_pred = "Could not analyze any lyrics."
         sad_count = 0
         happy_count = 0

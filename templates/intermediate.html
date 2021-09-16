@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Login V1</title>
+  <title>happysadsongs - a deep learning song lyric mood tester</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!--===============================================================================================-->
@@ -24,6 +24,9 @@
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/util.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
   <!--===============================================================================================-->
+    <!-- <link rel="stylesheet" type="text/css" href="../static/css/util.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css"> -->
+
   <meta http-equiv="refresh" content="16">
 </head>
 
@@ -31,7 +34,7 @@
 
   <div class="limiter">
     <div class="container-login100">
-      <div class="columns">
+      <div class="columns columns_page_loading">
         <div class="columns__last-songs">
           <h2>Songs to analyze ⟶</h2>
           <ol>
@@ -41,20 +44,19 @@
           </ol>
 
         </div>
-        <div class="columns__analysis">
+        <div class="columns__loading">
           <div class="happysad">
-
-            <div class="happysad__text">
+            <div class="happysad__text_page_main">
               <h1 class="happysad__title">
                 happysadsongs</h1>
               <p class="happysad__tagline">Change your music. <span class="happysad__tagline_span_blue">Change your mood.</span>
               </p>
             </div>
           </div>
-          <div>
+          <div class="loading">
               <img class="happysad__logo rotate" src="{{ url_for('static', filename='images/happysadlogo.png') }}"
               alt="happy sad songs logo -- a record playing in reverse">
-              <p><a href=intermediate?id={{value.id}}>Processing, Please Wait...</a></p>
+              <p>Processing, Please Wait...</p>
           </div>
 
 
