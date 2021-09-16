@@ -113,6 +113,6 @@ def GetFeatItems(token, feat):
             headers={'Authorization': f"Bearer {token['access_token']}"})
         final[idx] = {
             'playlist name':playlist['description'],
-            'tracks':r.json()
+            'tracks':r.json()['items']
             }
     return final
