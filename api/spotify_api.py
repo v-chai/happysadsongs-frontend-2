@@ -79,6 +79,8 @@ def GetTracksSpecs(token, response, onlyval=False):
             headers={'Authorization': f"Bearer {token['access_token']}"},
             params={'ids': lista})
 
+        r.url
+
         for idx, tracks in enumerate(r.json()['audio_features']):
             if tracks['valence'] is not None:
                 specs[idx] = {"Valence": tracks["valence"]}
