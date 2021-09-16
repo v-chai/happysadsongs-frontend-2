@@ -150,15 +150,12 @@ def GetFeatItems(token, feat):
 
 def GetPlaylistSongs(token, playlists):
     url = f'https://api.spotify.com/v1/playlists/{playlist}/tracks'
-    final = []
-    song_id = {'artist':[],'track':[], 'song_id':[]}
+    song_ids = []
     for playlist in playlists:
         r = requests.get(
             url, headers={'Authorization': f"Bearer {token['access_token']}"})
         songs = r.json().get('items', '')
         for song in songs:
-            song_id['artist'] = song['track']['artists'][0]
-            song_id['track'] = song['track']['name']
-            song_id['song_id'] = song['track']['id']
-        final.append(song_id)
-    return final
+            song_ids.append(song['track']['id'])
+
+    return song_ids

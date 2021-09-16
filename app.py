@@ -67,11 +67,11 @@ def featuredplaylists():
     return feat
 
 @app.route('/playlistsongs')
-def getplaylistitems():
+def getplaylistitemfeats():
     playlists = GetFeaturedPlaylists(session['token'])
     songlist = GetPlaylistSongs(session['token'], playlists=playlists)
-    return songlist
-
+    playlist_track_specs = GetTracksSpecs(session['token'], songlist, onlyval=True)
+    return playlist_track_specs
 
 @app.route('/listplayed')
 def listplayed():
