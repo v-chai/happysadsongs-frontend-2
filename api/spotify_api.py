@@ -51,25 +51,29 @@ def GetCustomList(token):
     cust_list[0] = ','.join(id_list)
     return cust_list
 
-def GetTracksSpecs(token, response):
+def GetTracksSpecs(token, response, onlyval=False):
     r = requests.get(
         'https://api.spotify.com/v1/audio-features',
         headers={'Authorization': f"Bearer {token['access_token']}"},
         params={'ids': response})
     specs = {}
-    for idx, tracks in enumerate(r.json()['audio_features']):
-        specs[idx] = {
-            "Song Name": response[idx + 1]["Song Name"],
-            "Artist Names": response[idx + 1]["Artist Names"],
-            # "Danceability": tracks["danceability"],
-            # "Duration": tracks["duration_ms"] / 1000,
-            # "Energy": tracks["energy"],
-            # "Liveness": tracks["liveness"],
-            # "Loudness": tracks["loudness"],
-            # "Mode": tracks["mode"],
-            # "Tempo": tracks["tempo"],
-            "Valence": tracks["valence"]
-        }
+    if not onlyval:
+        for idx, tracks in enumerate(r.json()['audio_features']):
+            specs[idx] = {
+                "Song Name": response[idx + 1]["Song Name"],
+                "Artist Names": response[idx + 1]["Artist Names"],
+                # "Danceability": tracks["danceability"],
+                # "Duration": tracks["duration_ms"] / 1000,
+                # "Energy": tracks["energy"],
+                # "Liveness": tracks["liveness"],
+                # "Loudness": tracks["loudness"],
+                # "Mode": tracks["mode"],
+                # "Tempo": tracks["tempo"],
+                "Valence": tracks["valence"]
+            }
+    else:
+        for idx, tracks in enumerate(r.json()['audio_features']):
+            specs[idx] = {"Valence": tracks["valence"]}
     return specs
 
 #Generate code used for token generation
