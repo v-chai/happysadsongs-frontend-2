@@ -73,10 +73,11 @@ def GetTracksSpecs(token, response, onlyval=False):
                 "Valence": tracks["valence"]
             }
     else:
+        lista = ','.join(response)
         r = requests.get(
             'https://api.spotify.com/v1/audio-features',
             headers={'Authorization': f"Bearer {token['access_token']}"},
-            params={'ids': response})
+            params={'ids': lista})
 
         for idx, tracks in enumerate(r.json()['audio_features']):
             specs[idx] = {"Valence": tracks["valence"]}
