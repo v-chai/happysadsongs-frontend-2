@@ -103,3 +103,16 @@ def GetFeaturedPlaylists(token):
         'https://api.spotify.com/v1/browse/featured-playlists',
         headers={'Authorization': f"Bearer {token['access_token']}"})
     return r.json()
+
+
+def GetFeatItems(token, feat):
+    final = {}
+    for idx, playlist in enumerate(feat['playlists']['items']):
+        r = requests.get(
+            playlist['tracks']['href'],
+            headers={'Authorization': f"Bearer {token['access_token']}"})
+        final[idx] = {
+            'playlist name':playlist['description'],
+            'tracks':r.json()
+            }
+    return final

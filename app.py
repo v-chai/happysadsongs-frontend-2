@@ -8,7 +8,7 @@ import redis
 from rq import Queue
 from rq.job import Job
 
-from api.spotify_api import GenToken, GetCustomList, GetRecentPlayed, GetTracksSpecs, GetCode, CategoryPlaylist, GetFeaturedPlaylists
+from api.spotify_api import GenToken, GetCustomList, GetTracksSpecs, GetCode, CategoryPlaylist, GetFeaturedPlaylists, GetFeatItems
 from api.xmatch_api import GetLyricsFromCustom, GetLyricsFromName
 from api.model_api import PredictTop
 
@@ -18,8 +18,6 @@ app.permanent_session_lifetime = timedelta(minutes=5)
 SESSION_TYPE = 'filesystem'
 app.config.from_object(__name__)
 Session(app)
-
-
 
 
 spotify_scope = "user-read-recently-played"
@@ -65,7 +63,9 @@ def getrecentsession():
 @app.route('/featuredplaylists')
 def featuredplaylists():
     session.permanent = True
-    return GetFeaturedPlaylists(session['token'])
+    feat = GetFeaturedPlaylists(session['token'])
+    return GetFeatItems(session['token'], feat)
+
 
 
 @app.route('/listplayed')
