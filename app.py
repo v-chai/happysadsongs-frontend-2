@@ -69,11 +69,9 @@ def featuredplaylists():
 @app.route('/playlistsongs')
 def getplaylistitems():
     playlists = ['37i9dQZF1DX4fpCWaHOned', '1fmeUJvkOtZQBhMCOHCXz3']
-    songs = []
-    for playlist in playlists:
-        songlist = GetPlaylistSongs(session['token'], playlist)
-        songs.append(songlist)
-    return songs
+    songlist = GetPlaylistSongs(session['token'], playlists[0])
+
+    return songlist
 
 
 @app.route('/listplayed')
