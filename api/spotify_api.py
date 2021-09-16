@@ -142,3 +142,12 @@ def GetFeatItems(token, feat):
             'tracks':tracks
             }
     return final
+
+
+def GetPlaylistSongs(token, playlist):
+    final = {}
+    url = f'https://api.spotify.com/v1/playlists/{playlist}/tracks'
+    r = requests.get(
+        url, headers={'Authorization': f"Bearer {token['access_token']}"})
+    response = r.json()
+    return response

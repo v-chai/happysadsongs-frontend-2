@@ -8,7 +8,7 @@ import redis
 from rq import Queue
 from rq.job import Job
 
-from api.spotify_api import GenToken, GetCustomList, GetTracksSpecs, GetCode, CategoryPlaylist, GetFeaturedPlaylists, GetFeatItems
+from api.spotify_api import GenToken, GetCustomList, GetTracksSpecs, GetCode, CategoryPlaylist, GetFeaturedPlaylists, GetFeatItems, GetPlaylistSongs
 from api.xmatch_api import GetLyricsFromCustom, GetLyricsFromName
 from api.model_api import PredictTop
 
@@ -66,6 +66,14 @@ def featuredplaylists():
     feat = GetFeaturedPlaylists(session['token'])
     return GetFeatItems(session['token'], feat)
 
+@app.route('/playlistsongs')
+def getplaylistitems():
+    playlists = ['37i9dQZF1DX4fpCWaHOned', '1fmeUJvkOtZQBhMCOHCXz3']
+    songs = []
+    for playlist in playlists:
+        songlist = GetPlaylistSongs(session['token'], playlist)
+        songs.append(songlist)
+    return songs
 
 
 @app.route('/listplayed')
