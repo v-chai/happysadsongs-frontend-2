@@ -128,7 +128,7 @@ def GetFeatItems(token, feat):
             tracks[idx] = {
                 "Song Name": track['track']['name'],
                 "Artist Names": track['track']['artists'],
-                "Valence": [idx]['Valence']
+                "Valence": specs[idx]['Valence']
             }
         final[idx] = {
             'playlist name':playlist['description'],
