@@ -96,3 +96,9 @@ def GenToken(code):
     head = {'Authorization': f'Basic {base64.b64encode(id_secrt.encode()).decode()}'}
     r = requests.post('https://accounts.spotify.com/api/token', data=bod, headers=head)
     return r
+
+
+def GetFeaturedPlaylists(token):
+    r = requests.get('https://api.spotify.com/v1/browse/featured-playlists',
+                     headers={'Authorization': f"Bearer {token}"})
+    return r.json()

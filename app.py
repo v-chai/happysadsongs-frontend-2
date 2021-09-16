@@ -8,7 +8,7 @@ import redis
 from rq import Queue
 from rq.job import Job
 
-from api.spotify_api import GenToken, GetCustomList, GetTracksSpecs, GetCode, CategoryPlaylist
+from api.spotify_api import GenToken, GetCustomList, GetRecentPlayed, GetTracksSpecs, GetCode, CategoryPlaylist, GetFeaturedPlaylists
 from api.xmatch_api import GetLyricsFromCustom, GetLyricsFromName
 from api.model_api import PredictTop
 
@@ -60,6 +60,12 @@ def getrecentsession():
     session['songs'] = GetLyricsFromCustom(custom)
     print(session['songs'])
     return redirect(url_for('home'))
+
+
+@app.route('/featuredplaylists')
+def featuredplaylists():
+    session.permanent = True
+    return GetFeaturedPlaylists(session['token'])
 
 
 @app.route('/listplayed')
