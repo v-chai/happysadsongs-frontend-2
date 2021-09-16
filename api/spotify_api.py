@@ -113,7 +113,11 @@ def GetFeaturedPlaylists(token):
     r = requests.get(
         'https://api.spotify.com/v1/browse/featured-playlists',
         headers={'Authorization': f"Bearer {token['access_token']}"})
-    return r.json()
+    play_ids = []
+    playlists = r.json().get('playlists', '').get('items', '')
+    for playlist in playlists:
+        play_ids.append(playlist.get('id', ''))
+    return play_ids
 
 
 def GetFeatItems(token, feat):
@@ -144,10 +148,17 @@ def GetFeatItems(token, feat):
     return final
 
 
-def GetPlaylistSongs(token, playlist):
-    final = {}
+def GetPlaylistSongs(token, playlists):
     url = f'https://api.spotify.com/v1/playlists/{playlist}/tracks'
-    r = requests.get(
-        url, headers={'Authorization': f"Bearer {token['access_token']}"})
-    response = r.json()
-    return response
+    final = []
+    song_id = {'artist':[],'track':[], 'song_id':[]}
+    for playlist in playlists:
+        r = requests.get(
+            url, headers={'Authorization': f"Bearer {token['access_token']}"})
+        songs = r.json().get('items', '')
+        for song in songs:
+            song_id['artist'] = song['track']['artists'][0]
+            song_id['track'] = song['track']['name']
+            song_id['song_id'] = song['track']['id']
+        final.append(song_id)
+    return final
