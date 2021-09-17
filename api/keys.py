@@ -1,5 +1,5 @@
-spotify_id = 'ea2ca76001f447b38d880e2227f16c3b'
-spotify_sect = 'd1bb62a1d3ea4f6aa480b84027e7f65f'
+spotify_id = 'e1cea2b6ad5f4a529e60556e17d8fff0'
+spotify_sect = '0df0c26200724492a4126649ff013c9a'
 
 genius_id = 'Q64jLUi4wgqTlK7Hu-AA8fClPdmaUFHASM5KUlfe-xXsYsmzwNmU73hZSsdmlzV0'
 genius_sect = 'D5I2w_36VWwZ9CEhn2PErdUdhHWPY5loN90q6kMRUlqZqdH26Mr7Nom2oLevvl67jy3ol1wAvb_CEjQTXJoEug'
