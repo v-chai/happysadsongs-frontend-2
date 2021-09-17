@@ -21,7 +21,7 @@ def PredictTop(list):
             backup_valence.append(float(song["Valence"]))
         else:
             backup_valence.append(float(song["Valence"]))
-
+        sleep(5)
     if len(checked_songs) > 0:
         try:
             overall_pred = mode(preds)
