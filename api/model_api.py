@@ -1,6 +1,7 @@
 import requests
 from api.keys import model_base_url
 from statistics import mode, mean
+from time import sleep
 
 def PredictTop(list):
     checked_songs = []
@@ -19,6 +20,7 @@ def PredictTop(list):
             backup_valence.append(float(song["Valence"]))
         else:
             backup_valence.append(float(song["Valence"]))
+        sleep(5)
     if len(checked_songs) > 0:
         try:
             overall_pred = mode(preds)
