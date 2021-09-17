@@ -13,6 +13,7 @@ def PredictTop(list):
         if len(tmp) < 20 or song['Language'] != "en":
             continue
         r = requests.get(f'{model_base_url}', params={'lyric': tmp[:1500]})
+        print(r.status_code)
         if r.status_code == 200:
             preds.append(int(r.json()['prediction']))
             checked_songs.append(f"{song['Artist Names'][0]} - {song['Song Name']}")
